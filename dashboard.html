@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="XnjVF7zTNhQMnrRZOTg98h1mFRsjFVoJEYriSMf2">
+    <title>Dashboard Ringkasan — Penertiban Angkutan Umum Kota Bogor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="./build/assets/app-DJl5Ulfr.css" /><link rel="modulepreload" as="script" href="./build/assets/app-Dj93Lf1N.js" /><link rel="stylesheet" href="./build/assets/app-DJl5Ulfr.css" /><script type="module" src="./build/assets/app-Dj93Lf1N.js"></script></head>
+<body class="bg-gray-50 font-inter text-gray-800 antialiased">
+<div x-data="{ sidebarOpen: false }" class="flex h-screen overflow-hidden">
+
+    
+    <div x-show="sidebarOpen" @click="sidebarOpen=false"
+         x-transition:enter="transition-opacity ease-linear duration-200"
+         x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+         x-transition:leave="transition-opacity ease-linear duration-200"
+         x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+         class="fixed inset-0 z-20 bg-black/50 lg:hidden" style="display:none;"></div>
+
+    
+    <aside :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'"
+           class="fixed inset-y-0 left-0 z-30 w-64 flex flex-col bg-[#1a2744] text-white transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0">
+
+        
+        <div class="flex items-center gap-3 px-6 py-5 border-b border-white/10">
+            <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 p-1">
+                <img src="./images/logo-dishub.png" alt="Logo Dishub" class="w-8 h-8 object-contain">
+            </div>
+            <div>
+                <p class="text-xs font-semibold text-blue-300 leading-tight">Dishub Kota Bogor</p>
+                <p class="text-sm font-bold leading-tight">Sistem Pengawasan Informasi Angkutan</p>
+            </div>
+        </div>
+
+        
+        <nav class="flex-1 overflow-y-auto py-4 px-3">
+            
+                                            <a href="dashboard.html"
+                   class="flex items-center gap-3 px-3 py-2.5 rounded-lg mb-1 transition-all duration-150 text-sm font-medium group text-blue-100/80 hover:bg-white/10 hover:text-white">
+                    <svg class="w-5 h-5 flex-shrink-0 transition-colors text-blue-300 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+        </svg>
+                            Dashboard
+                </a>
+                                            <a href="./kendaraan"
+                   class="flex items-center gap-3 px-3 py-2.5 rounded-lg mb-1 transition-all duration-150 text-sm font-medium group text-blue-100/80 hover:bg-white/10 hover:text-white">
+                    <svg class="w-5 h-5 flex-shrink-0 transition-colors text-blue-300 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0M13 6h4l3 5v4h-2m-5-9H5l-2 5v4h2m0 0h8"/>
+        </svg>
+                            Database Kendaraan
+                </a>
+                                            <a href="./penertiban"
+                   class="flex items-center gap-3 px-3 py-2.5 rounded-lg mb-1 transition-all duration-150 text-sm font-medium group text-blue-100/80 hover:bg-white/10 hover:text-white">
+                    <svg class="w-5 h-5 flex-shrink-0 transition-colors text-blue-300 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+        </svg>
+                            Data Penertiban
+                </a>
+                                            <a href="./barang-bukti"
+                   class="flex items-center gap-3 px-3 py-2.5 rounded-lg mb-1 transition-all duration-150 text-sm font-medium group text-blue-100/80 hover:bg-white/10 hover:text-white">
+                    <svg class="w-5 h-5 flex-shrink-0 transition-colors text-blue-300 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/>
+        </svg>
+                            Barang Bukti
+                </a>
+                                            <a href="./trayek"
+                   class="flex items-center gap-3 px-3 py-2.5 rounded-lg mb-1 transition-all duration-150 text-sm font-medium group text-blue-100/80 hover:bg-white/10 hover:text-white">
+                    <svg class="w-5 h-5 flex-shrink-0 transition-colors text-blue-300 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+        </svg>
+                            Data Trayek
+                </a>
+                                            <a href="./laporan"
+                   class="flex items-center gap-3 px-3 py-2.5 rounded-lg mb-1 transition-all duration-150 text-sm font-medium group text-blue-100/80 hover:bg-white/10 hover:text-white">
+                    <svg class="w-5 h-5 flex-shrink-0 transition-colors text-blue-300 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+        </svg>
+                            Laporan
+                </a>
+                                            <a href="./audit-log"
+                   class="flex items-center gap-3 px-3 py-2.5 rounded-lg mb-1 transition-all duration-150 text-sm font-medium group text-blue-100/80 hover:bg-white/10 hover:text-white">
+                    <svg class="w-5 h-5 flex-shrink-0 transition-colors text-blue-300 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+                            Audit Log
+                </a>
+            
+                        <div class="mt-4 mb-1 px-3">
+                <p class="text-xs font-semibold text-blue-300/60 uppercase tracking-wider">Administrasi</p>
+            </div>
+            <a href="./admin/petugas"
+               class="flex items-center justify-between px-3 py-2.5 rounded-lg mb-1 transition-all duration-150 text-sm font-medium text-blue-100/80 hover:bg-white/10 hover:text-white">
+                <div class="flex items-center gap-3">
+                    <svg class="w-5 h-5 flex-shrink-0 transition-colors text-blue-300 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+        </svg>
+                            <span>Akun Petugas</span>
+                </div>
+                                            </a>
+            <a href="./admin"
+               class="flex items-center gap-3 px-3 py-2.5 rounded-lg mb-1 transition-all duration-150 text-sm font-medium text-blue-100/80 hover:bg-white/10 hover:text-white">
+                <svg class="w-5 h-5 flex-shrink-0 transition-colors text-blue-300 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+        </svg>
+                        Manajemen Admin
+            </a>
+            
+            <div class="mt-4 mb-1 px-3">
+                <p class="text-xs font-semibold text-blue-300/60 uppercase tracking-wider">Akun</p>
+            </div>
+            <a href="./pengaturan"
+               class="flex items-center gap-3 px-3 py-2.5 rounded-lg mb-1 transition-all duration-150 text-sm font-medium text-blue-100/80 hover:bg-white/10 hover:text-white">
+                <svg class="w-5 h-5 flex-shrink-0 transition-colors text-blue-300 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+        </svg>
+                        Pengaturan
+            </a>
+        </nav>
+
+        
+        <div class="border-t border-white/10 px-4 py-4">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-sm font-bold flex-shrink-0">
+                    D
+                </div>
+                <div class="min-w-0">
+                    <p class="text-sm font-semibold truncate">Dili Muryanto, SE., M.Si</p>
+                    <p class="text-xs text-blue-300/70 truncate">Super Admin</p>
+                </div>
+            </div>
+            <form action="./logout" method="POST">
+                <input type="hidden" name="_token" value="XnjVF7zTNhQMnrRZOTg98h1mFRsjFVoJEYriSMf2" autocomplete="off">                <button type="submit"
+                        class="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-red-300 hover:bg-red-500/20 hover:text-red-200 transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                    </svg>
+                    Logout
+                </button>
+            </form>
+        </div>
+    </aside>
+
+    
+    <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+
+        
+        <header class="bg-white border-b border-gray-200 px-4 lg:px-6 py-3 flex items-center justify-between flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <button @click="sidebarOpen = !sidebarOpen" class="lg:hidden p-2 rounded-lg text-gray-500 hover:bg-gray-100">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+                <div>
+                    <h1 class="text-base lg:text-lg font-bold text-gray-800">Dashboard Administrasi</h1>
+                                        <div class="text-xs text-gray-400 mt-0.5">    <span>Beranda</span> / <span class="text-slate-600 font-medium">Statistik & Ringkasan Data</span>
+</div>
+                                    </div>
+            </div>
+            <div class="flex items-center gap-3">
+                
+                <div class="flex items-center gap-2 sm:gap-3 bg-slate-50 border border-slate-200/80 rounded-xl px-2.5 py-1.5 shadow-sm">
+                    <!-- 1. Logo Pemkot Bogor -->
+                    <div class="flex items-center gap-1" title="Pemerintah Kota Bogor">
+                        <img src="./images/logo-kota-bogor.png" alt="Logo Pemkot Bogor" class="w-6 h-6 object-contain">
+                    </div>
+
+                    <!-- 2. Logo Dishub Kota Bogor -->
+                    <div class="flex items-center gap-1" title="Dinas Perhubungan Kota Bogor">
+                        <img src="./images/logo-dishub.png" alt="Logo Dishub Kota Bogor" class="w-6 h-6 object-contain">
+                    </div>
+
+                    <div class="h-4 w-px bg-slate-300 hidden sm:block"></div>
+
+                    <!-- 3. Maskot Rubo -->
+                    <div class="hidden sm:flex items-center gap-1" title="Maskot RuBo (Rusa Bogor)">
+                        <img src="./images/maskot-rubo.png" alt="Maskot RuBo" class="w-6 h-6 object-contain">
+                        <span class="text-[10px] font-bold text-blue-900 hidden md:inline">RuBo</span>
+                    </div>
+
+                    <!-- 4. Tugu Kujang -->
+                    <div class="hidden md:flex items-center gap-1" title="Landmark Tugu Kujang">
+                        <div class="w-6 h-6 rounded-full overflow-hidden border border-amber-300 shadow-xs flex-shrink-0">
+                            <img src="./images/tugu-kujang.jpg" alt="Tugu Kujang" class="w-full h-full object-cover">
+                        </div>
+                        <span class="text-[10px] font-medium text-slate-600 hidden lg:inline">Tugu Kujang</span>
+                    </div>
+
+                    <!-- 5. Lawang Salapan -->
+                    <div class="hidden md:flex items-center gap-1" title="Tepas Lawang Salapan">
+                        <div class="w-6 h-6 rounded-full overflow-hidden border border-blue-300 shadow-xs flex-shrink-0">
+                            <img src="./images/lawang-salapan.jpg" alt="Lawang Salapan" class="w-full h-full object-cover">
+                        </div>
+                        <span class="text-[10px] font-medium text-slate-600 hidden lg:inline">Lawang Salapan</span>
+                    </div>
+
+                    <div class="h-4 w-px bg-slate-300"></div>
+
+                    <!-- 6. Teks Identitas Salawang -->
+                    <div class="flex items-center gap-1">
+                        <span class="px-2 py-0.5 bg-gradient-to-r from-blue-700 via-indigo-700 to-amber-600 text-white text-[11px] font-extrabold tracking-wider rounded-lg shadow-xs uppercase">
+                            Salawang
+                        </span>
+                    </div>
+                </div>
+
+                <span class="hidden sm:block text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full whitespace-nowrap">
+                    Thursday, 22 October 2026
+                </span>
+            </div>
+        </header>
+
+        
+        
+        
+        <main class="flex-1 overflow-y-auto px-4 lg:px-6 py-4">
+            <div class="space-y-6">
+    <!-- Header Banner -->
+    <div class="bg-gradient-to-r from-[#1a2744] to-blue-900 rounded-2xl p-6 text-white shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+            <span class="inline-block px-2.5 py-1 bg-blue-500/30 text-blue-200 text-xs font-semibold rounded-md mb-2">
+                Dinas Perhubungan Kota Bogor • Bidang Angkutan
+            </span>
+            <h2 class="text-xl md:text-2xl font-bold">Basis Data Penertiban Angkutan Umum Usia > 20 Tahun</h2>
+            <p class="text-sm text-slate-300 mt-1 max-w-2xl">
+                Berdasarkan UU No. 22/2009, Perda Kota Bogor No. 8/2023, dan Perwali No. 11/2026 tentang Rasionalisasi, Peremajaan, dan Penghapusan Kendaraan Bermotor Umum dalam Trayek.
+            </p>
+        </div>
+        <div class="flex items-center gap-2 flex-shrink-0">
+            <a href="./kendaraan/create" class="px-4 py-2.5 bg-blue-500 hover:bg-blue-600 text-white rounded-xl text-xs font-semibold shadow-sm transition flex items-center gap-1.5">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                Tambah Kendaraan
+            </a>
+            <a href="./penertiban/create" class="px-4 py-2.5 bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-xl text-xs font-semibold transition flex items-center gap-1.5">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                Buat Surat Penyitaan
+            </a>
+        </div>
+    </div>
+
+    <!-- KPI Metric Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Card 1: Total Kendaraan -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex items-center justify-between">
+            <div>
+                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Kendaraan Terdata</p>
+                <h3 class="text-2xl font-bold text-slate-800 mt-1">6</h3>
+                <p class="text-xs text-blue-600 font-medium mt-1">Armada terdata di sistem</p>
+            </div>
+            <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0M13 6h4l3 5v4h-2m-5-9H5l-2 5v4h2m0 0h8"/></svg>
+            </div>
+        </div>
+
+        <!-- Card 2: Menunggu Verifikasi -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex items-center justify-between">
+            <div>
+                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Menunggu Verifikasi</p>
+                <h3 class="text-2xl font-bold text-amber-600 mt-1">3</h3>
+                <p class="text-xs text-slate-500 font-medium mt-1">Perlu pemeriksaan berkas</p>
+            </div>
+            <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+        </div>
+
+        <!-- Card 3: Terverifikasi -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex items-center justify-between">
+            <div>
+                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Kendaraan Terverifikasi</p>
+                <h3 class="text-2xl font-bold text-emerald-600 mt-1">3</h3>
+                <p class="text-xs text-slate-500 font-medium mt-1">Divalidasi oleh verifikator</p>
+            </div>
+            <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+        </div>
+
+        <!-- Card 4: Selesai Ditertibkan -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex items-center justify-between">
+            <div>
+                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Selesai Ditertibkan</p>
+                <h3 class="text-2xl font-bold text-indigo-600 mt-1">3</h3>
+                <p class="text-xs text-slate-500 font-medium mt-1">Penanganan tuntas</p>
+            </div>
+            <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts Section -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Chart 1: Berdasarkan Jenis Pelanggaran -->
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h3 class="text-sm font-bold text-slate-800">Distribusi Pelanggaran Berdasarkan Jenis Pelanggaran</h3>
+                    <p class="text-xs text-slate-500">Jumlah armada & penyitaan berdasarkan batas usia (≥ 20 tahun), kelaikan teknis, dan administrasi</p>
+                </div>
+            </div>
+            <div class="h-64">
+                <canvas id="chartJenisPelanggaran"></canvas>
+            </div>
+        </div>
+
+        <!-- Chart 2: Berdasarkan Tahun Kendaraan -->
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h3 class="text-sm font-bold text-slate-800">Distribusi Tahun Pembuatan Armada</h3>
+                    <p class="text-xs text-slate-500">Sebaran usia kendaraan angkutan umum yang ditertibkan</p>
+                </div>
+            </div>
+            <div class="h-64">
+                <canvas id="chartTahun"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tables Row: Kendaraan Terbaru & Log Aktivitas -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- 2 Kolom: Data Kendaraan Terdata Terbaru -->
+        <div class="lg:col-span-2 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
+            <div class="p-5 border-b border-slate-100 flex items-center justify-between">
+                <div>
+                    <h3 class="text-sm font-bold text-slate-800">Pendataan Kendaraan Terkini</h3>
+                    <p class="text-xs text-slate-500">5 kendaraan terakhir yang diregistrasi ke sistem</p>
+                </div>
+                <a href="./kendaraan" class="text-xs text-blue-600 hover:text-blue-800 font-semibold">
+                    Lihat Semua &rarr;
+                </a>
+            </div>
+            <div class="overflow-x-auto flex-1">
+                <table class="w-full text-left text-xs">
+                    <thead class="bg-slate-50 text-slate-600 font-semibold border-b border-slate-100 uppercase tracking-wider">
+                        <tr>
+                            <th class="px-4 py-3">No. Kendaraan</th>
+                            <th class="px-4 py-3">Trayek</th>
+                            <th class="px-4 py-3">Tahun / Usia</th>
+                            <th class="px-4 py-3">Status Verifikasi</th>
+                            <th class="px-4 py-3 text-right">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-slate-700">
+                                                    <tr class="hover:bg-slate-50/80 transition">
+                                <td class="px-4 py-3 font-medium">
+                                    <span class="font-bold text-slate-900 block">F 8888 BC</span>
+                                    <span class="text-[11px] text-slate-400 font-mono">KND-2026-0009</span>
+                                </td>
+                                <td class="px-4 py-3">
+                                    -
+                                    <span class="block text-[11px] text-slate-400"></span>
+                                </td>
+                                <td class="px-4 py-3">
+                                    2007
+                                    <span class="block text-[11px] font-semibold text-rose-600">
+                                        19 Tahun
+                                    </span>
+                                </td>
+                                <td class="px-4 py-3">
+                                                                            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-100 text-amber-800">
+                                            Menunggu
+                                        </span>
+                                                                    </td>
+                                <td class="px-4 py-3 text-right">
+                                    <a href="./kendaraan/10" class="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded text-[11px] font-medium transition">
+                                        Detail
+                                    </a>
+                                </td>
+                            </tr>
+                                                    <tr class="hover:bg-slate-50/80 transition">
+                                <td class="px-4 py-3 font-medium">
+                                    <span class="font-bold text-slate-900 block">F 1977 MM</span>
+                                    <span class="text-[11px] text-slate-400 font-mono">KND-2026-0008</span>
+                                </td>
+                                <td class="px-4 py-3">
+                                    -
+                                    <span class="block text-[11px] text-slate-400"></span>
+                                </td>
+                                <td class="px-4 py-3">
+                                    2020
+                                    <span class="block text-[11px] font-semibold text-rose-600">
+                                        6 Tahun
+                                    </span>
+                                </td>
+                                <td class="px-4 py-3">
+                                                                            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-100 text-amber-800">
+                                            Menunggu
+                                        </span>
+                                                                    </td>
+                                <td class="px-4 py-3 text-right">
+                                    <a href="./kendaraan/9" class="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded text-[11px] font-medium transition">
+                                        Detail
+                                    </a>
+                                </td>
+                            </tr>
+                                                    <tr class="hover:bg-slate-50/80 transition">
+                                <td class="px-4 py-3 font-medium">
+                                    <span class="font-bold text-slate-900 block">F 1904 KK</span>
+                                    <span class="text-[11px] text-slate-400 font-mono">KND-2026-0003</span>
+                                </td>
+                                <td class="px-4 py-3">
+                                    Trayek 03
+                                    <span class="block text-[11px] text-slate-400">Trayek 03 (Baranangsiang - Semplak)</span>
+                                </td>
+                                <td class="px-4 py-3">
+                                    2000
+                                    <span class="block text-[11px] font-semibold text-rose-600">
+                                        26 Tahun
+                                    </span>
+                                </td>
+                                <td class="px-4 py-3">
+                                                                            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-100 text-emerald-800">
+                                            Diverifikasi
+                                        </span>
+                                                                    </td>
+                                <td class="px-4 py-3 text-right">
+                                    <a href="./kendaraan/3" class="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded text-[11px] font-medium transition">
+                                        Detail
+                                    </a>
+                                </td>
+                            </tr>
+                                                    <tr class="hover:bg-slate-50/80 transition">
+                                <td class="px-4 py-3 font-medium">
+                                    <span class="font-bold text-slate-900 block">F 1977 MM</span>
+                                    <span class="text-[11px] text-slate-400 font-mono">KND-2026-0004</span>
+                                </td>
+                                <td class="px-4 py-3">
+                                    Trayek 04
+                                    <span class="block text-[11px] text-slate-400">Trayek 04 (Sukasari - Terminal Merdeka)</span>
+                                </td>
+                                <td class="px-4 py-3">
+                                    2017
+                                    <span class="block text-[11px] font-semibold text-rose-600">
+                                        9 Tahun
+                                    </span>
+                                </td>
+                                <td class="px-4 py-3">
+                                                                            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-100 text-emerald-800">
+                                            Diverifikasi
+                                        </span>
+                                                                    </td>
+                                <td class="px-4 py-3 text-right">
+                                    <a href="./kendaraan/4" class="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded text-[11px] font-medium transition">
+                                        Detail
+                                    </a>
+                                </td>
+                            </tr>
+                                                    <tr class="hover:bg-slate-50/80 transition">
+                                <td class="px-4 py-3 font-medium">
+                                    <span class="font-bold text-slate-900 block">F 1955 ZZ</span>
+                                    <span class="text-[11px] text-slate-400 font-mono">KND-2026-0005</span>
+                                </td>
+                                <td class="px-4 py-3">
+                                    Trayek 05
+                                    <span class="block text-[11px] text-slate-400">Trayek 05 (Bubulak - Ciawi via Tol Baranangsiang)</span>
+                                </td>
+                                <td class="px-4 py-3">
+                                    1999
+                                    <span class="block text-[11px] font-semibold text-rose-600">
+                                        27 Tahun
+                                    </span>
+                                </td>
+                                <td class="px-4 py-3">
+                                                                            <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-100 text-emerald-800">
+                                            Diverifikasi
+                                        </span>
+                                                                    </td>
+                                <td class="px-4 py-3 text-right">
+                                    <a href="./kendaraan/5" class="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded text-[11px] font-medium transition">
+                                        Detail
+                                    </a>
+                                </td>
+                            </tr>
+                                            </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 1 Kolom: Aktivitas Administrasi Terbaru -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
+            <div class="p-5 border-b border-slate-100 flex items-center justify-between">
+                <div>
+                    <h3 class="text-sm font-bold text-slate-800">Audit Aktivitas</h3>
+                    <p class="text-xs text-slate-500">Riwayat aksi admin terbaru</p>
+                </div>
+                <a href="./audit-log" class="text-xs text-blue-600 hover:text-blue-800 font-semibold">
+                    Semua &rarr;
+                </a>
+            </div>
+            <div class="p-4 flex-1 overflow-y-auto max-h-[380px] space-y-3">
+                                    <div class="flex items-start gap-3 text-xs border-b border-slate-50 pb-2.5 last:border-0 last:pb-0">
+                        <div class="w-6 h-6 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold flex-shrink-0 text-[10px]">
+                            L
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-slate-800 font-medium truncate">Pengguna Dili Muryanto, SE., M.Si (Super Admin) berhasil login</p>
+                            <p class="text-[11px] text-slate-400 mt-0.5">
+                                Dili Muryanto, SE., M.Si • <span class="font-mono text-[10px] text-slate-500 font-medium" title="1 hour ago">22/10/2026 12:48:13 WIB</span>
+                            </p>
+                        </div>
+                    </div>
+                                    <div class="flex items-start gap-3 text-xs border-b border-slate-50 pb-2.5 last:border-0 last:pb-0">
+                        <div class="w-6 h-6 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold flex-shrink-0 text-[10px]">
+                            L
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-slate-800 font-medium truncate">Pengguna afdil alfarizi logout</p>
+                            <p class="text-[11px] text-slate-400 mt-0.5">
+                                afdil alfarizi • <span class="font-mono text-[10px] text-slate-500 font-medium" title="1 hour ago">22/10/2026 12:48:09 WIB</span>
+                            </p>
+                        </div>
+                    </div>
+                                    <div class="flex items-start gap-3 text-xs border-b border-slate-50 pb-2.5 last:border-0 last:pb-0">
+                        <div class="w-6 h-6 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold flex-shrink-0 text-[10px]">
+                            C
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-slate-800 font-medium truncate">Petugas afdil alfarizi melaporkan kendaraan F 8888 BC (KND-2026-0009)</p>
+                            <p class="text-[11px] text-slate-400 mt-0.5">
+                                afdil alfarizi • <span class="font-mono text-[10px] text-slate-500 font-medium" title="1 hour ago">22/10/2026 12:48:00 WIB</span>
+                            </p>
+                        </div>
+                    </div>
+                                    <div class="flex items-start gap-3 text-xs border-b border-slate-50 pb-2.5 last:border-0 last:pb-0">
+                        <div class="w-6 h-6 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold flex-shrink-0 text-[10px]">
+                            L
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-slate-800 font-medium truncate">Pengguna afdil alfarizi (Petugas Pelapor) berhasil login</p>
+                            <p class="text-[11px] text-slate-400 mt-0.5">
+                                afdil alfarizi • <span class="font-mono text-[10px] text-slate-500 font-medium" title="1 hour ago">22/10/2026 12:47:21 WIB</span>
+                            </p>
+                        </div>
+                    </div>
+                                    <div class="flex items-start gap-3 text-xs border-b border-slate-50 pb-2.5 last:border-0 last:pb-0">
+                        <div class="w-6 h-6 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold flex-shrink-0 text-[10px]">
+                            L
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-slate-800 font-medium truncate">Pengguna Dili Muryanto, SE., M.Si logout</p>
+                            <p class="text-[11px] text-slate-400 mt-0.5">
+                                Dili Muryanto, SE., M.Si • <span class="font-mono text-[10px] text-slate-500 font-medium" title="1 hour ago">22/10/2026 12:47:13 WIB</span>
+                            </p>
+                        </div>
+                    </div>
+                                    <div class="flex items-start gap-3 text-xs border-b border-slate-50 pb-2.5 last:border-0 last:pb-0">
+                        <div class="w-6 h-6 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold flex-shrink-0 text-[10px]">
+                            L
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-slate-800 font-medium truncate">Pengguna Dili Muryanto, SE., M.Si (Super Admin) berhasil login</p>
+                            <p class="text-[11px] text-slate-400 mt-0.5">
+                                Dili Muryanto, SE., M.Si • <span class="font-mono text-[10px] text-slate-500 font-medium" title="1 hour ago">22/10/2026 12:46:50 WIB</span>
+                            </p>
+                        </div>
+                    </div>
+                                    <div class="flex items-start gap-3 text-xs border-b border-slate-50 pb-2.5 last:border-0 last:pb-0">
+                        <div class="w-6 h-6 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold flex-shrink-0 text-[10px]">
+                            L
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-slate-800 font-medium truncate">Pengguna Dili Muryanto, SE., M.Si (Super Admin) berhasil login</p>
+                            <p class="text-[11px] text-slate-400 mt-0.5">
+                                Dili Muryanto, SE., M.Si • <span class="font-mono text-[10px] text-slate-500 font-medium" title="1 day ago">21/10/2026 14:05:49 WIB</span>
+                            </p>
+                        </div>
+                    </div>
+                                    <div class="flex items-start gap-3 text-xs border-b border-slate-50 pb-2.5 last:border-0 last:pb-0">
+                        <div class="w-6 h-6 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold flex-shrink-0 text-[10px]">
+                            L
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-slate-800 font-medium truncate">Pengguna admintest logout</p>
+                            <p class="text-[11px] text-slate-400 mt-0.5">
+                                admintest • <span class="font-mono text-[10px] text-slate-500 font-medium" title="1 day ago">21/10/2026 14:05:18 WIB</span>
+                            </p>
+                        </div>
+                    </div>
+                                    <div class="flex items-start gap-3 text-xs border-b border-slate-50 pb-2.5 last:border-0 last:pb-0">
+                        <div class="w-6 h-6 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold flex-shrink-0 text-[10px]">
+                            L
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-slate-800 font-medium truncate">Pengguna admintest (Admin) berhasil login</p>
+                            <p class="text-[11px] text-slate-400 mt-0.5">
+                                admintest • <span class="font-mono text-[10px] text-slate-500 font-medium" title="1 day ago">21/10/2026 14:04:33 WIB</span>
+                            </p>
+                        </div>
+                    </div>
+                                    <div class="flex items-start gap-3 text-xs border-b border-slate-50 pb-2.5 last:border-0 last:pb-0">
+                        <div class="w-6 h-6 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold flex-shrink-0 text-[10px]">
+                            L
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-slate-800 font-medium truncate">Pengguna Dili Muryanto, SE., M.Si logout</p>
+                            <p class="text-[11px] text-slate-400 mt-0.5">
+                                Dili Muryanto, SE., M.Si • <span class="font-mono text-[10px] text-slate-500 font-medium" title="1 day ago">21/10/2026 14:04:24 WIB</span>
+                            </p>
+                        </div>
+                    </div>
+                            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Chart Jenis Pelanggaran
+        const ctxJenis = document.getElementById('chartJenisPelanggaran');
+        if (ctxJenis) {
+            const dataJenis = [{"kategori":"Batas Usia Teknis (\u2265 20 Thn)","total":3,"color":"#dc2626"},{"kategori":"Pelanggaran Teknis Kendaraan","total":1,"color":"#ea580c"},{"kategori":"Administrasi Buku Uji (KIR)","total":2,"color":"#2563eb"},{"kategori":"Administrasi Izin Trayek (KPS)","total":3,"color":"#0284c7"},{"kategori":"Administrasi Dokumen STNK","total":3,"color":"#4f46e5"},{"kategori":"Administrasi Dokumen Lainnya","total":4,"color":"#0d9488"}];
+            const labels = dataJenis.map(item => item.kategori);
+            const values = dataJenis.map(item => item.total);
+            const colors = dataJenis.map(item => item.color);
+
+            new Chart(ctxJenis, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Jumlah Pelanggaran / Bukti',
+                        data: values,
+                        backgroundColor: colors,
+                        borderRadius: 6,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return ' ' + context.parsed.y + ' Kasus / Dokumen';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: { precision: 0 }
+                        },
+                        x: {
+                            ticks: {
+                                maxRotation: 25,
+                                minRotation: 0,
+                                font: { size: 10 }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Chart Tahun Kendaraan
+        const ctxTahun = document.getElementById('chartTahun');
+        if (ctxTahun) {
+            const dataTahun = [{"tahun_kendaraan":1999,"total":1},{"tahun_kendaraan":2000,"total":1},{"tahun_kendaraan":2004,"total":1},{"tahun_kendaraan":2007,"total":1},{"tahun_kendaraan":2017,"total":1},{"tahun_kendaraan":2020,"total":1}];
+            const labelsTahun = dataTahun.map(item => item.tahun_kendaraan);
+            const valuesTahun = dataTahun.map(item => item.total);
+
+            new Chart(ctxTahun, {
+                type: 'line',
+                data: {
+                    labels: labelsTahun.length ? labelsTahun : ['Belum Ada Data'],
+                    datasets: [{
+                        label: 'Jumlah Armada',
+                        data: valuesTahun.length ? valuesTahun : [0],
+                        borderColor: '#0284c7',
+                        backgroundColor: 'rgba(2, 132, 199, 0.1)',
+                        fill: true,
+                        tension: 0.3,
+                        pointBackgroundColor: '#0284c7',
+                        pointRadius: 4,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: { precision: 0 }
+                        }
+                    }
+                }
+            });
+        }
+    });
+</script>
+        </main>
+    </div>
+</div>
+</body>
+</html>
