@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="">
+    <meta name="csrf-token" content="w6ZfjB4WuUET4NHa2eyZWoeOEHRjf5O6rUUBGxny">
     <title>Selamat Datang — SIM Penertiban Angkutan Dishub Kota Bogor</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="preload" as="style" href="./build/assets/app-DJl5Ulfr.css" /><link rel="modulepreload" as="script" href="./build/assets/app-Dj93Lf1N.js" /><link rel="stylesheet" href="./build/assets/app-DJl5Ulfr.css" /><script type="module" src="./build/assets/app-Dj93Lf1N.js"></script></head>
+    <link rel="preload" as="style" href="./index.html/build/assets/app-DJl5Ulfr.css" /><link rel="modulepreload" as="script" href="./index.html/build/assets/app-Dj93Lf1N.js" /><link rel="stylesheet" href="./index.html/build/assets/app-DJl5Ulfr.css" /><script type="module" src="./index.html/build/assets/app-Dj93Lf1N.js"></script></head>
 <body class="bg-slate-100 font-inter min-h-screen flex items-center justify-center p-4 antialiased">
     <div class="w-full max-w-md">
         <!-- Card Container -->
@@ -40,8 +40,8 @@
 
                 
                 
-                <form action="dashboard.html" method="POST" class="space-y-4">
-                    <input type="hidden" name="_token" value="" autocomplete="off">
+                <form action="./index.html" method="GET" class="space-y-4" onsubmit="handleDemoSubmit(event, './')">
+                    <input type="hidden" name="_token" value="w6ZfjB4WuUET4NHa2eyZWoeOEHRjf5O6rUUBGxny" autocomplete="off">
                     <div>
                         <label for="email" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
                             Email Kedinasan atau Username
@@ -93,7 +93,7 @@
                 <div class="mt-6 pt-5 border-t border-slate-200 text-center space-y-2">
                     <p class="text-xs text-slate-600">
                         Petugas lapangan baru?
-                        <a href="register.html" class="font-bold text-blue-700 hover:underline">
+                        <a href="./register.html" class="font-bold text-blue-700 hover:underline">
                             Daftar Akun Petugas
                         </a>
                     </p>
@@ -104,5 +104,20 @@
             </div>
         </div>
     </div>
+<script>
+function handleDemoSubmit(e, prefix) {
+    e.preventDefault();
+    alert('Simulasi Demo: Aksi berhasil diproses! (Dalam mode demo online)');
+    var form = e.target;
+    if (form.action && form.action.includes('login')) {
+        window.location.href = prefix + 'dashboard.html';
+    } else if (form.action && form.action.includes('kendaraan')) {
+        window.location.href = prefix + 'kendaraan.html';
+    } else {
+        window.location.href = prefix + 'dashboard.html';
+    }
+    return false;
+}
+</script>
 </body>
 </html>
