@@ -14,6 +14,7 @@ RUN apk add --no-cache \
     sqlite-dev \
     nodejs \
     npm \
+    gettext \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install gd pdo pdo_sqlite zip bcmath opcache
 
@@ -47,9 +48,9 @@ RUN chown -R www-data:www-data storage bootstrap/cache database \
     && chmod -R 775 storage bootstrap/cache \
     && chmod 664 database/database.sqlite 2>/dev/null || true
 
-# Nginx configuration - listen on port 7860 (Hugging Face requirement)
+# Nginx config template (uses envsubst for dynamic PORT)
 RUN printf 'server {\n\
-    listen 7860;\n\
+    listen ${NGINX_PORT};\n\
     server_name localhost;\n\
     root /var/www/html/public;\n\
     index index.php index.html;\n\
@@ -75,7 +76,7 @@ RUN printf 'server {\n\
     location ~ /\\.(?!well-known).* {\n\
         deny all;\n\
     }\n\
-}\n' > /etc/nginx/http.d/default.conf
+}\n' > /etc/nginx/http.d/default.conf.template
 
 # Supervisor configuration
 RUN printf '[supervisord]\n\
@@ -105,6 +106,12 @@ stderr_logfile_maxbytes=0\n\
 RUN printf '#!/bin/sh\n\
 set -e\n\
 \n\
+# Set port (Back4App uses $PORT, default 8080)\n\
+export NGINX_PORT=${PORT:-8080}\n\
+\n\
+# Generate nginx config with correct port\n\
+envsubst '"'"'${NGINX_PORT}'"'"' < /etc/nginx/http.d/default.conf.template > /etc/nginx/http.d/default.conf\n\
+\n\
 # Ensure SQLite database exists\n\
 if [ ! -f /var/www/html/database/database.sqlite ]; then\n\
     touch /var/www/html/database/database.sqlite\n\
@@ -122,10 +129,10 @@ php artisan view:cache\n\
 # Create storage link\n\
 php artisan storage:link 2>/dev/null || true\n\
 \n\
-# Start Supervisor (runs Nginx + PHP-FPM)\n\
+# Start Supervisor (Nginx + PHP-FPM)\n\
 exec /usr/bin/supervisord -c /etc/supervisord.conf\n\
 ' > /entrypoint.sh && chmod +x /entrypoint.sh
 
-EXPOSE 7860
+EXPOSE 8080
 
 CMD ["/entrypoint.sh"]
