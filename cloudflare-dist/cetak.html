@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surat Penyitaan - 500/ 160 - Daltib</title>
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 1.5cm 2cm;
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 11pt;
+            line-height: 1.4;
+            color: #000;
+            background: #f8fafc;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .paper {
+            background: #fff;
+            max-width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            padding: 2cm;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        @media print {
+            body {
+                background: #fff;
+                padding: 0;
+            }
+            .paper {
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+                max-width: 100%;
+                min-height: auto;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+
+        /* Kop Surat */
+        .header-table {
+            width: 100%;
+            border-bottom: 3px double #000;
+            padding-bottom: 8px;
+            margin-bottom: 16px;
+        }
+        .header-table td {
+            vertical-align: middle;
+        }
+        .logo-box {
+            width: 80px;
+            text-align: center;
+        }
+        .logo-placeholder {
+            width: 70px;
+            height: 75px;
+            border: 1px solid #999;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8pt;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+        .header-text {
+            text-align: center;
+        }
+        .header-text h3 {
+            margin: 0;
+            font-size: 14pt;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+        .header-text h2 {
+            margin: 2px 0;
+            font-size: 17pt;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .header-text p {
+            margin: 0;
+            font-size: 9.5pt;
+        }
+
+        /* Judul Surat */
+        .title-box {
+            text-align: center;
+            margin: 18px 0 16px 0;
+        }
+        .title-box h1 {
+            margin: 0;
+            font-size: 13pt;
+            font-weight: bold;
+            text-decoration: underline;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .title-box p {
+            margin: 2px 0 0 0;
+            font-size: 11pt;
+        }
+
+        /* Identitas */
+        .data-list {
+            margin: 10px 0 15px 0;
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 6px;
+        }
+        .data-table td {
+            padding: 2.5px 0;
+            vertical-align: top;
+        }
+        .data-table td.col-label {
+            width: 25px;
+        }
+        .data-table td.col-name {
+            width: 230px;
+        }
+        .data-table td.col-colon {
+            width: 15px;
+            text-align: center;
+        }
+
+        /* Tabel Barang Bukti */
+        .bb-title {
+            margin: 14px 0 6px 0;
+            font-size: 11pt;
+        }
+        .bb-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 16px;
+        }
+        .bb-table th, .bb-table td {
+            border: 1px solid #000;
+            padding: 5px 8px;
+            font-size: 10.5pt;
+        }
+        .bb-table th {
+            text-align: center;
+            background-color: #f3f4f6;
+            font-weight: bold;
+        }
+
+        /* Narasi Hukum */
+        .narrative {
+            text-align: justify;
+            text-indent: 32px;
+            line-height: 1.45;
+            margin-bottom: 10px;
+        }
+        .narrative-emphasis {
+            font-weight: bold;
+        }
+
+        /* Tanda Tangan */
+        .signature-table {
+            width: 100%;
+            margin-top: 35px;
+            border-collapse: collapse;
+        }
+        .signature-table td {
+            vertical-align: top;
+            width: 50%;
+        }
+
+        .action-bar {
+            max-width: 210mm;
+            margin: 0 auto 16px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="action-bar no-print">
+        <a href="./penertiban.html/1" style="display: inline-block; padding: 8px 16px; background: #64748b; color: #fff; text-decoration: none; border-radius: 8px; font-family: sans-serif; font-size: 13px;">
+            &larr; Kembali ke Berkas
+        </a>
+        <button onclick="window.print()" style="display: inline-block; padding: 8px 20px; background: #1d4ed8; color: #fff; border: none; border-radius: 8px; font-family: sans-serif; font-size: 13px; font-weight: bold; cursor: pointer;">
+            🖨️ Cetak Dokumen Resmi
+        </button>
+    </div>
+
+    <div class="paper">
+        <!-- KOP SURAT DINAS PERHUBUNGAN KOTA BOGOR -->
+        <table class="header-table">
+            <tr>
+                <td class="logo-box">
+                    <img src="./images/logo-kota-bogor.png" alt="Logo Pemerintah Kota Bogor" style="width: 72px; height: auto; max-height: 90px; display: block; margin: 0 auto; object-fit: contain;">
+                </td>
+                <td class="header-text">
+                    <h3>PEMERINTAH DAERAH KOTA BOGOR</h3>
+                    <h2>DINAS PERHUBUNGAN</h2>
+                    <p>Jl. Raya Tajur No. 54 Telepon / Fax. (0251) 8333611</p>
+                    <p>Bogor - 16134</p>
+                </td>
+            </tr>
+        </table>
+
+        <!-- JUDUL & NOMOR SURAT -->
+        <div class="title-box">
+            <h1>SURAT PENYITAAN</h1>
+            <p>Nomor: 500/ 160 - Daltib</p>
+        </div>
+
+        <p style="margin: 0;">Saya yang bertanda tangan di bawah ini :</p>
+
+        <!-- IDENTITAS PELANGGAR & KENDARAAN -->
+        <table class="data-table">
+            <tr>
+                <td class="col-label">a.</td>
+                <td class="col-name">Nama Pemilik/Pengemudi</td>
+                <td class="col-colon">:</td>
+                <td><strong>Ahmad Hidayat</strong></td>
+            </tr>
+            <tr>
+                <td class="col-label">b.</td>
+                <td class="col-name">No. SIM</td>
+                <td class="col-colon">:</td>
+                <td>SIM-A-8712938471</td>
+            </tr>
+            <tr>
+                <td class="col-label">c.</td>
+                <td class="col-name">Alamat</td>
+                <td class="col-colon">:</td>
+                <td>Kampung Parung Jambu RT 02/RW 04, Bogor Timur</td>
+            </tr>
+            <tr>
+                <td class="col-label">d.</td>
+                <td class="col-name">Nomor Kendaraan</td>
+                <td class="col-colon">:</td>
+                <td><strong>F 1928 AB</strong></td>
+            </tr>
+            <tr>
+                <td class="col-label">e.</td>
+                <td class="col-name">Jenis / Trayek Angkutan</td>
+                <td class="col-colon">:</td>
+                <td>
+                    Mobil Penumpang Umum (Angkot)
+                                            / Trayek 01 - Trayek 01 (Baranangsiang - Bubulak via Otista)
+                                    </td>
+            </tr>
+            <tr>
+                <td class="col-label">f.</td>
+                <td class="col-name">Usia Teknis Operasional</td>
+                <td class="col-colon">:</td>
+                <td><strong>25 Tahun</strong> (Tahun 2001)</td>
+            </tr>
+            <tr>
+                <td class="col-label">g.</td>
+                <td class="col-name">Lokasi Pelanggaran</td>
+                <td class="col-colon">:</td>
+                <td>Jl. Pajajaran, Depan Terminal Baranangsiang</td>
+            </tr>
+        </table>
+
+        <!-- TABEL BARANG BUKTI -->
+        <p class="bb-title">Barang Bukti yang disita :</p>
+        <table class="bb-table">
+            <thead>
+                <tr>
+                    <th style="width: 35px;">No</th>
+                    <th style="width: 250px;">Jenis</th>
+                    <th style="width: 170px;">Nomor</th>
+                    <th>Keterangan</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align: center;">1.</td>
+                    <td>Buku Uji Berkala (KIR)</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">2.</td>
+                    <td>Kartu Pengawasan (KPS)</td>
+                    <td>KPS-01/DISHUB/2018</td>
+                    <td>KPS telah kedaluwarsa</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">3.</td>
+                    <td>Surat Tanda Kendaraan Bermotor (STNK)</td>
+                    <td>STNK-09182736-F</td>
+                    <td>STNK berlaku sampai 2023</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">4.</td>
+                    <td>Kendaraan</td>
+                    <td>F 1928 AB</td>
+                    <td>Unit diamankan di Pool Dishub Cibuluh</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- NARASI KONSIDERANS HUKUM RESMI -->
+        <div class="narrative">
+            Berdasarkan Undang-Undang Nomor 22 Tahun 2009 tentang Lalu Lintas dan Angkutan Jalan, Perda Kota Bogor Nomor 8 Tahun 2023 tentang Transportasi dan Perwali Kota Bogor Nomor 11 Tahun 2026 tentang Rasionalisasi, Peremajaan, dan Penghapusan Kendaraan Bermotor Umum dalam Trayek. Penyitaan dilakukan karena kendaraan tersebut secara teknis dan administrasi telah melanggar batas usia operasional armada angkutan umum yang ditetapkan oleh Pemerintah Daerah Kota Bogor yaitu maksimal 20 Tahun.
+        </div>
+
+        <div class="narrative">
+            Kendaraan yang telah melebihi batas usia tersebut dinilai membahayakan keselamatan pengguna jalan serta menurunkan kualitas standar pelayanan. Kendaraan angkutan umum yang melebihi usia teknis <span class="narrative-emphasis">TIDAK AKAN BEROPERASI KEMBALI</span> sebagai angkutan umum/penumpang di wilayah Kota Bogor dan seluruh jalur/trayek yang terkait.
+        </div>
+
+        <div class="narrative">
+            Demikian Surat Penyitaan ini dibuat dengan sebenar-benarnya dan tanpa ada unsur paksaan dari pihak manapun.
+        </div>
+
+        <!-- TANDA TANGAN -->
+        <table class="signature-table">
+            <tr>
+                <td style="padding-left: 20px;">
+                    <br>
+                    Pelanggar,
+                    <div style="height: 65px;"></div>
+                    ....................................................
+                </td>
+                <td style="text-align: center;">
+                    Bogor, 10 February 2026<br>
+                    <strong>Pejabat PPNS</strong><br>
+                    DINAS PERHUBUNGAN KOTA BOGOR
+                    <div style="height: 50px;"></div>
+                    <strong><u>FAZAL RACHMAN SE</u></strong><br>
+                    <span>................................................</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+<script>
+function handleDemoSubmit(e, prefix) {
+    e.preventDefault();
+    alert('Simulasi Demo: Aksi berhasil diproses! (Dalam mode demo online)');
+    var form = e.target;
+    if (form.action && form.action.includes('login')) {
+        window.location.href = prefix + 'dashboard.html';
+    } else if (form.action && form.action.includes('kendaraan')) {
+        window.location.href = prefix + 'kendaraan.html';
+    } else {
+        window.location.href = prefix + 'dashboard.html';
+    }
+    return false;
+}
+</script>
+</body>
+</html>
