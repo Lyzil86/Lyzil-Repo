@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0; url=dashboard.html">
+    <title>Mengarahkan ke Dashboard...</title>
+    <script>
+        // Redirect automatically
+        var path = window.location.pathname;
+        if (path.includes('kendaraan')) {
+            window.location.replace('kendaraan.html');
+        } else if (path.includes('penertiban')) {
+            window.location.replace('penertiban.html');
+        } else if (path.includes('barang-bukti')) {
+            window.location.replace('barang-bukti.html');
+        } else {
+            window.location.replace('dashboard.html');
+        }
+    </script>
+</head>
+<body style="font-family: sans-serif; text-align: center; padding-top: 50px;">
+    <p>Memuat halaman SILAWANG Kota Bogor...</p>
+</body>
+</html>

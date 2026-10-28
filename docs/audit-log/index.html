@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="w6ZfjB4WuUET4NHa2eyZWoeOEHRjf5O6rUUBGxny">
+    <title>Audit Log Sistem — Penertiban Angkutan Umum Kota Bogor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="../index.html/build/assets/app-DJl5Ulfr.css" /><link rel="modulepreload" as="script" href="../index.html/build/assets/app-Dj93Lf1N.js" /><link rel="stylesheet" href="../index.html/build/assets/app-DJl5Ulfr.css" /><script type="module" src="../index.html/build/assets/app-Dj93Lf1N.js"></script></head>
+<body class="bg-gray-50 font-inter text-gray-800 antialiased">
+<div x-data="{ sidebarOpen: false }" class="flex h-screen overflow-hidden">
+
+    
+    <div x-show="sidebarOpen" @click="sidebarOpen=false"
+         x-transition:enter="transition-opacity ease-linear duration-200"
+         x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+         x-transition:leave="transition-opacity ease-linear duration-200"
+         x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+         class="fixed inset-0 z-20 bg-black/50 lg:hidden" style="display:none;"></div>
+
+    
+    <aside :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'"
+           class="fixed inset-y-0 left-0 z-30 w-64 flex flex-col bg-[#1a2744] text-white transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0">
+
+        
+        <div class="flex items-center gap-3 px-6 py-5 border-b border-white/10">
+            <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 p-1">
+                <img src="../images/logo-dishub.png" alt="Logo Dishub" class="w-8 h-8 object-contain">
+            </div>
+            <div>
+                <p class="text-xs font-semibold text-blue-300 leading-tight">Dishub Kota Bogor</p>
+                <p class="text-sm font-bold leading-tight">Sistem Pengawasan Informasi Angkutan</p>
+            </div>
+        </div>
+
+        
+        <nav class="flex-1 overflow-y-auto py-4 px-3">
+            
+                                            <a href="../dashboard.html"
+                   class="flex items-center gap-3 px-3 py-2.5 rounded-lg mb-1 transition-all duration-150 text-sm font-medium group text-blue-100/80 hover:bg-white/10 hover:text-white">
+                    <svg class="w-5 h-5 flex-shrink-0 transition-colors text-blue-300 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+        </svg>
+                            Dashboard
+                </a>
+                                            <a href="../kendaraan.html"
+                   class="flex items-center gap-3 px-3 py-2.5 rounded-lg mb-1 transition-all duration-150 text-sm font-medium group text-blue-100/80 hover:bg-white/10 hover:text-white">
+                    <svg class="w-5 h-5 flex-shrink-0 transition-colors text-blue-300 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0M13 6h4l3 5v4h-2m-5-9H5l-2 5v4h2m0 0h8"/>
+        </svg>
+                            Database Kendaraan
+                </a>
+                                            <a href="../penertiban.html"
+                   class="flex items-center gap-3 px-3 py-2.5 rounded-lg mb-1 transition-all duration-150 text-sm font-medium group text-blue-100/80 hover:bg-white/10 hover:text-white">
+                    <svg class="w-5 h-5 flex-shrink-0 transition-colors text-blue-300 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+        </svg>
+                            Data Penertiban
+                </a>
+                                            <a href="../barang-bukti.html"
+                   class="flex items-center gap-3 px-3 py-2.5 rounded-lg mb-1 transition-all duration-150 text-sm font-medium group text-blue-100/80 hover:bg-white/10 hover:text-white">
+                    <svg class="w-5 h-5 flex-shrink-0 transition-colors text-blue-300 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/>
+        </svg>
+                            Barang Bukti
+                </a>
+                                            <a href="../trayek.html"
+                   class="flex items-center gap-3 px-3 py-2.5 rounded-lg mb-1 transition-all duration-150 text-sm font-medium group text-blue-100/80 hover:bg-white/10 hover:text-white">
+                    <svg class="w-5 h-5 flex-shrink-0 transition-colors text-blue-300 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+        </svg>
+                            Data Trayek
+                </a>
+                                            <a href="../index.html/laporan"
+                   class="flex items-center gap-3 px-3 py-2.5 rounded-lg mb-1 transition-all duration-150 text-sm font-medium group text-blue-100/80 hover:bg-white/10 hover:text-white">
+                    <svg class="w-5 h-5 flex-shrink-0 transition-colors text-blue-300 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+        </svg>
+                            Laporan
+                </a>
+                                            <a href="../audit-log.html"
+                   class="flex items-center gap-3 px-3 py-2.5 rounded-lg mb-1 transition-all duration-150 text-sm font-medium group text-blue-100/80 hover:bg-white/10 hover:text-white">
+                    <svg class="w-5 h-5 flex-shrink-0 transition-colors text-blue-300 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+                            Audit Log
+                </a>
+            
+                        <div class="mt-4 mb-1 px-3">
+                <p class="text-xs font-semibold text-blue-300/60 uppercase tracking-wider">Administrasi</p>
+            </div>
+            <a href="../dashboard.html"
+               class="flex items-center justify-between px-3 py-2.5 rounded-lg mb-1 transition-all duration-150 text-sm font-medium text-blue-100/80 hover:bg-white/10 hover:text-white">
+                <div class="flex items-center gap-3">
+                    <svg class="w-5 h-5 flex-shrink-0 transition-colors text-blue-300 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+        </svg>
+                            <span>Akun Petugas</span>
+                </div>
+                                            </a>
+            <a href="../index.html/admin"
+               class="flex items-center gap-3 px-3 py-2.5 rounded-lg mb-1 transition-all duration-150 text-sm font-medium text-blue-100/80 hover:bg-white/10 hover:text-white">
+                <svg class="w-5 h-5 flex-shrink-0 transition-colors text-blue-300 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+        </svg>
+                        Manajemen Admin
+            </a>
+            
+            <div class="mt-4 mb-1 px-3">
+                <p class="text-xs font-semibold text-blue-300/60 uppercase tracking-wider">Akun</p>
+            </div>
+            <a href="../index.html/pengaturan"
+               class="flex items-center gap-3 px-3 py-2.5 rounded-lg mb-1 transition-all duration-150 text-sm font-medium text-blue-100/80 hover:bg-white/10 hover:text-white">
+                <svg class="w-5 h-5 flex-shrink-0 transition-colors text-blue-300 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+        </svg>
+                        Pengaturan
+            </a>
+        </nav>
+
+        
+        <div class="border-t border-white/10 px-4 py-4">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-sm font-bold flex-shrink-0">
+                    D
+                </div>
+                <div class="min-w-0">
+                    <p class="text-sm font-semibold truncate">Dili Muryanto, SE., M.Si</p>
+                    <p class="text-xs text-blue-300/70 truncate">Super Admin</p>
+                </div>
+            </div>
+            <form action="../index.html" method="GET" onsubmit="handleDemoSubmit(event, '../')">
+                <input type="hidden" name="_token" value="w6ZfjB4WuUET4NHa2eyZWoeOEHRjf5O6rUUBGxny" autocomplete="off">                <button type="submit"
+                        class="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-red-300 hover:bg-red-500/20 hover:text-red-200 transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                    </svg>
+                    Logout
+                </button>
+            </form>
+        </div>
+    </aside>
+
+    
+    <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+
+        
+        <header class="bg-white border-b border-gray-200 px-4 lg:px-6 py-3 flex items-center justify-between flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <button @click="sidebarOpen = !sidebarOpen" class="lg:hidden p-2 rounded-lg text-gray-500 hover:bg-gray-100">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+                <div>
+                    <h1 class="text-base lg:text-lg font-bold text-gray-800">Jejak Audit Aktivitas (Audit Log)</h1>
+                                        <div class="text-xs text-gray-400 mt-0.5">    <span>Sistem Keamanan</span> / <span class="text-slate-600 font-medium">Log Aktivitas Petugas</span>
+</div>
+                                    </div>
+            </div>
+            <div class="flex items-center gap-3">
+                
+                <div class="flex items-center gap-2 sm:gap-3 bg-slate-50 border border-slate-200/80 rounded-xl px-2.5 py-1.5 shadow-sm">
+                    <!-- 1. Logo Pemkot Bogor -->
+                    <div class="flex items-center gap-1" title="Pemerintah Kota Bogor">
+                        <img src="../images/logo-kota-bogor.png" alt="Logo Pemkot Bogor" class="w-6 h-6 object-contain">
+                    </div>
+
+                    <!-- 2. Logo Dishub Kota Bogor -->
+                    <div class="flex items-center gap-1" title="Dinas Perhubungan Kota Bogor">
+                        <img src="../images/logo-dishub.png" alt="Logo Dishub Kota Bogor" class="w-6 h-6 object-contain">
+                    </div>
+
+                    <div class="h-4 w-px bg-slate-300 hidden sm:block"></div>
+
+                    <!-- 3. Maskot Rubo -->
+                    <div class="hidden sm:flex items-center gap-1" title="Maskot RuBo (Rusa Bogor)">
+                        <img src="../images/maskot-rubo.png" alt="Maskot RuBo" class="w-6 h-6 object-contain">
+                        <span class="text-[10px] font-bold text-blue-900 hidden md:inline">RuBo</span>
+                    </div>
+
+                    <!-- 4. Tugu Kujang -->
+                    <div class="hidden md:flex items-center gap-1" title="Landmark Tugu Kujang">
+                        <div class="w-6 h-6 rounded-full overflow-hidden border border-amber-300 shadow-xs flex-shrink-0">
+                            <img src="../images/tugu-kujang.jpg" alt="Tugu Kujang" class="w-full h-full object-cover">
+                        </div>
+                        <span class="text-[10px] font-medium text-slate-600 hidden lg:inline">Tugu Kujang</span>
+                    </div>
+
+                    <!-- 5. Lawang Salapan -->
+                    <div class="hidden md:flex items-center gap-1" title="Tepas Lawang Salapan">
+                        <div class="w-6 h-6 rounded-full overflow-hidden border border-blue-300 shadow-xs flex-shrink-0">
+                            <img src="../images/lawang-salapan.jpg" alt="Lawang Salapan" class="w-full h-full object-cover">
+                        </div>
+                        <span class="text-[10px] font-medium text-slate-600 hidden lg:inline">Lawang Salapan</span>
+                    </div>
+
+                    <div class="h-4 w-px bg-slate-300"></div>
+
+                    <!-- 6. Teks Identitas Salawang -->
+                    <div class="flex items-center gap-1">
+                        <span class="px-2 py-0.5 bg-gradient-to-r from-blue-700 via-indigo-700 to-amber-600 text-white text-[11px] font-extrabold tracking-wider rounded-lg shadow-xs uppercase">
+                            Salawang
+                        </span>
+                    </div>
+                </div>
+
+                <span class="hidden sm:block text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full whitespace-nowrap">
+                    Thursday, 22 October 2026
+                </span>
+            </div>
+        </header>
+
+        
+        
+        
+        <main class="flex-1 overflow-y-auto px-4 lg:px-6 py-4">
+            <div class="space-y-5">
+    <!-- Header -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+            <h2 class="text-lg font-bold text-slate-800">Riwayat & Log Keamanan Sistem</h2>
+            <p class="text-xs text-slate-500">Mencatat seluruh aksi penambahan, perubahan, penghapusan, verifikasi, login, logout, dan ekspor data.</p>
+        </div>
+    </div>
+
+    <!-- Filter Toolbar -->
+    <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+        <form method="GET" action="../audit-log.html" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3" onsubmit="handleDemoSubmit(event, '../')">
+            <div>
+                <label class="block text-[11px] font-semibold text-slate-600 uppercase tracking-wider mb-1">Cari Keterangan / Admin</label>
+                <input type="text" name="search" value="" placeholder="Cari aksi, nama admin, deskripsi..."
+                       class="w-full py-2 px-3 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white">
+            </div>
+
+            <div>
+                <label class="block text-[11px] font-semibold text-slate-600 uppercase tracking-wider mb-1">Jenis Aksi</label>
+                <select name="aksi" class="w-full py-2 px-3 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white uppercase">
+                    <option value="">Semua Aksi</option>
+                                            <option value="create" >CREATE</option>
+                                            <option value="delete" >DELETE</option>
+                                            <option value="export" >EXPORT</option>
+                                            <option value="login" >LOGIN</option>
+                                            <option value="logout" >LOGOUT</option>
+                                            <option value="register" >REGISTER</option>
+                                            <option value="update" >UPDATE</option>
+                                    </select>
+            </div>
+
+            <div>
+                <label class="block text-[11px] font-semibold text-slate-600 uppercase tracking-wider mb-1">Dari Tanggal</label>
+                <input type="date" name="tanggal_dari" value=""
+                       class="w-full py-2 px-3 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white">
+            </div>
+
+            <div>
+                <label class="block text-[11px] font-semibold text-slate-600 uppercase tracking-wider mb-1">Sampai Tanggal</label>
+                <input type="date" name="tanggal_sampai" value=""
+                       class="w-full py-2 px-3 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white">
+            </div>
+
+            <div class="flex items-end gap-2">
+                <button type="submit" class="flex-1 py-2 px-4 bg-slate-800 hover:bg-slate-900 text-white rounded-xl text-xs font-semibold transition cursor-pointer">
+                    Filter Log
+                </button>
+                            </div>
+        </form>
+    </div>
+
+    <!-- Table Container -->
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden"
+         x-data="{ detailModal: false, selectedLog: null }">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs">
+                <thead class="bg-slate-50 text-slate-600 font-semibold border-b border-slate-200 uppercase tracking-wider">
+                    <tr>
+                        <th class="px-4 py-3.5 w-48 whitespace-nowrap">Waktu Log (WIB)</th>
+                        <th class="px-4 py-3.5 w-40">Petugas / Admin</th>
+                        <th class="px-4 py-3.5 w-24">Aksi</th>
+                        <th class="px-4 py-3.5">Deskripsi Tindakan</th>
+                        <th class="px-4 py-3.5 w-28">IP Address</th>
+                        <th class="px-4 py-3.5 w-16 text-center">Detail</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 text-slate-700">
+                                            <tr class="hover:bg-slate-50/80 transition">
+                            <td class="px-4 py-3 whitespace-nowrap text-slate-600 font-mono text-[11px] font-semibold">
+                                22/10/2026 12:48:13 WIB
+                            </td>
+                            <td class="px-4 py-3 font-semibold text-slate-900 whitespace-nowrap">
+                                Dili Muryanto, SE., M.Si
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                                                <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-blue-100 text-blue-800">
+                                    login
+                                </span>
+                            </td>
+                            <td class="px-4 py-3 text-slate-800">
+                                <span class="font-medium">Pengguna Dili Muryanto, SE., M.Si (Super Admin) berhasil login</span>
+                                                            </td>
+                            <td class="px-4 py-3 font-mono text-slate-500 text-[11px] whitespace-nowrap">
+                                127.0.0.1
+                            </td>
+                            <td class="px-4 py-3 text-center whitespace-nowrap">
+                                <button type="button"
+                                        @click="selectedLog = {&quot;id&quot;:78,&quot;waktu&quot;:&quot;22\/10\/2026 12:48:13 WIB&quot;,&quot;user_name&quot;:&quot;Dili Muryanto, SE., M.Si&quot;,&quot;aksi&quot;:&quot;login&quot;,&quot;deskripsi&quot;:&quot;Pengguna Dili Muryanto, SE., M.Si (Super Admin) berhasil login&quot;,&quot;model&quot;:null,&quot;model_id&quot;:null,&quot;ip_address&quot;:&quot;127.0.0.1&quot;,&quot;user_agent&quot;:&quot;Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/155.0.0.0 Safari\/537.36 Edg\/155.0.0.0&quot;,&quot;data_lama&quot;:null,&quot;data_baru&quot;:null}; detailModal = true"
+                                        class="p-1.5 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition cursor-pointer"
+                                        title="Lihat Detail Aktivitas">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                </button>
+                            </td>
+                        </tr>
+                                            <tr class="hover:bg-slate-50/80 transition">
+                            <td class="px-4 py-3 whitespace-nowrap text-slate-600 font-mono text-[11px] font-semibold">
+                                22/10/2026 12:48:09 WIB
+                            </td>
+                            <td class="px-4 py-3 font-semibold text-slate-900 whitespace-nowrap">
+                                afdil alfarizi
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                                                <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-slate-100 text-slate-700">
+                                    logout
+                                </span>
+                            </td>
+                            <td class="px-4 py-3 text-slate-800">
+                                <span class="font-medium">Pengguna afdil alfarizi logout</span>
+                                                            </td>
+                            <td class="px-4 py-3 font-mono text-slate-500 text-[11px] whitespace-nowrap">
+                                127.0.0.1
+                            </td>
+                            <td class="px-4 py-3 text-center whitespace-nowrap">
+                                <button type="button"
+                                        @click="selectedLog = {&quot;id&quot;:77,&quot;waktu&quot;:&quot;22\/10\/2026 12:48:09 WIB&quot;,&quot;user_name&quot;:&quot;afdil alfarizi&quot;,&quot;aksi&quot;:&quot;logout&quot;,&quot;deskripsi&quot;:&quot;Pengguna afdil alfarizi logout&quot;,&quot;model&quot;:null,&quot;model_id&quot;:null,&quot;ip_address&quot;:&quot;127.0.0.1&quot;,&quot;user_agent&quot;:&quot;Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/155.0.0.0 Safari\/537.36 Edg\/155.0.0.0&quot;,&quot;data_lama&quot;:null,&quot;data_baru&quot;:null}; detailModal = true"
+                                        class="p-1.5 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition cursor-pointer"
+                                        title="Lihat Detail Aktivitas">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                </button>
+                            </td>
+                        </tr>
+                                            <tr class="hover:bg-slate-50/80 transition">
+                            <td class="px-4 py-3 whitespace-nowrap text-slate-600 font-mono text-[11px] font-semibold">
+                                22/10/2026 12:48:00 WIB
+                            </td>
+                            <td class="px-4 py-3 font-semibold text-slate-900 whitespace-nowrap">
+                                afdil alfarizi
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                                                <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-emerald-100 text-emerald-800">
+                                    create
+                                </span>
+                            </td>
+                            <td class="px-4 py-3 text-slate-800">
+                                <span class="font-medium">Petugas afdil alfarizi melaporkan kendaraan F 8888 BC (KND-2026-0009)</span>
+                                                                    <span class="text-[10px] text-slate-400 block font-mono">Model: Kendaraan (ID: 10)</span>
+                                                            </td>
+                            <td class="px-4 py-3 font-mono text-slate-500 text-[11px] whitespace-nowrap">
+                                127.0.0.1
+                            </td>
+                            <td class="px-4 py-3 text-center whitespace-nowrap">
+                                <button type="button"
+                                        @click="selectedLog = {&quot;id&quot;:76,&quot;waktu&quot;:&quot;22\/10\/2026 12:48:00 WIB&quot;,&quot;user_name&quot;:&quot;afdil alfarizi&quot;,&quot;aksi&quot;:&quot;create&quot;,&quot;deskripsi&quot;:&quot;Petugas afdil alfarizi melaporkan kendaraan F 8888 BC (KND-2026-0009)&quot;,&quot;model&quot;:&quot;Kendaraan&quot;,&quot;model_id&quot;:10,&quot;ip_address&quot;:&quot;127.0.0.1&quot;,&quot;user_agent&quot;:&quot;Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/155.0.0.0 Safari\/537.36 Edg\/155.0.0.0&quot;,&quot;data_lama&quot;:null,&quot;data_baru&quot;:{&quot;nomor_kendaraan&quot;:&quot;F 8888 BC&quot;,&quot;jenis_kendaraan&quot;:&quot;Angkutan Kota (Angkot)&quot;,&quot;nama_trayek&quot;:&quot;Trayek 01 (Baranangsiang - Bubulak via Otista)&quot;,&quot;tahun_kendaraan&quot;:&quot;2007&quot;,&quot;jenis_pelanggaran&quot;:&quot;pelanggaran_administrasi&quot;,&quot;lokasi_pelanggaran&quot;:&quot;Jl. Suryakencana, Bogor Tengah&quot;,&quot;tanggal_pendataan&quot;:&quot;2026-10-22T00:00:00.000000Z&quot;,&quot;warna&quot;:&quot;Hijau \/ Putih&quot;,&quot;merek&quot;:null,&quot;model_kendaraan&quot;:null,&quot;no_mesin&quot;:null,&quot;no_rangka&quot;:null,&quot;catatan&quot;:null,&quot;usia_operasional&quot;:19,&quot;kode_data&quot;:&quot;KND-2026-0009&quot;,&quot;created_by&quot;:4,&quot;status_verifikasi&quot;:&quot;menunggu&quot;,&quot;status_penanganan&quot;:&quot;belum_ditangani&quot;,&quot;updated_at&quot;:&quot;2026-10-22T05:48:00.000000Z&quot;,&quot;created_at&quot;:&quot;2026-10-22T05:48:00.000000Z&quot;,&quot;id&quot;:10}}; detailModal = true"
+                                        class="p-1.5 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition cursor-pointer"
+                                        title="Lihat Detail Aktivitas">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                </button>
+                            </td>
+                        </tr>
+                                            <tr class="hover:bg-slate-50/80 transition">
+                            <td class="px-4 py-3 whitespace-nowrap text-slate-600 font-mono text-[11px] font-semibold">
+                                22/10/2026 12:47:21 WIB
+                            </td>
+                            <td class="px-4 py-3 font-semibold text-slate-900 whitespace-nowrap">
+                                afdil alfarizi
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                                                <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-blue-100 text-blue-800">
+                                    login
+                                </span>
+                            </td>
+                            <td class="px-4 py-3 text-slate-800">
+                                <span class="font-medium">Pengguna afdil alfarizi (Petugas Pelapor) berhasil login</span>
+                                                            </td>
+                            <td class="px-4 py-3 font-mono text-slate-500 text-[11px] whitespace-nowrap">
+                                127.0.0.1
+                            </td>
+                            <td class="px-4 py-3 text-center whitespace-nowrap">
+                                <button type="button"
+                                        @click="selectedLog = {&quot;id&quot;:75,&quot;waktu&quot;:&quot;22\/10\/2026 12:47:21 WIB&quot;,&quot;user_name&quot;:&quot;afdil alfarizi&quot;,&quot;aksi&quot;:&quot;login&quot;,&quot;deskripsi&quot;:&quot;Pengguna afdil alfarizi (Petugas Pelapor) berhasil login&quot;,&quot;model&quot;:null,&quot;model_id&quot;:null,&quot;ip_address&quot;:&quot;127.0.0.1&quot;,&quot;user_agent&quot;:&quot;Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/155.0.0.0 Safari\/537.36 Edg\/155.0.0.0&quot;,&quot;data_lama&quot;:null,&quot;data_baru&quot;:null}; detailModal = true"
+                                        class="p-1.5 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition cursor-pointer"
+                                        title="Lihat Detail Aktivitas">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                </button>
+                            </td>
+                        </tr>
+                                            <tr class="hover:bg-slate-50/80 transition">
+                            <td class="px-4 py-3 whitespace-nowrap text-slate-600 font-mono text-[11px] font-semibold">
+                                22/10/2026 12:47:13 WIB
+                            </td>
+                            <td class="px-4 py-3 font-semibold text-slate-900 whitespace-nowrap">
+                                Dili Muryanto, SE., M.Si
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                                                <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-slate-100 text-slate-700">
+                                    logout
+                                </span>
+                            </td>
+                            <td class="px-4 py-3 text-slate-800">
+                                <span class="font-medium">Pengguna Dili Muryanto, SE., M.Si logout</span>
+                                                            </td>
+                            <td class="px-4 py-3 font-mono text-slate-500 text-[11px] whitespace-nowrap">
+                                127.0.0.1
+                            </td>
+                            <td class="px-4 py-3 text-center whitespace-nowrap">
+                                <button type="button"
+                                        @click="selectedLog = {&quot;id&quot;:74,&quot;waktu&quot;:&quot;22\/10\/2026 12:47:13 WIB&quot;,&quot;user_name&quot;:&quot;Dili Muryanto, SE., M.Si&quot;,&quot;aksi&quot;:&quot;logout&quot;,&quot;deskripsi&quot;:&quot;Pengguna Dili Muryanto, SE., M.Si logout&quot;,&quot;model&quot;:null,&quot;model_id&quot;:null,&quot;ip_address&quot;:&quot;127.0.0.1&quot;,&quot;user_agent&quot;:&quot;Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/155.0.0.0 Safari\/537.36 Edg\/155.0.0.0&quot;,&quot;data_lama&quot;:null,&quot;data_baru&quot;:null}; detailModal = true"
+                                        class="p-1.5 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition cursor-pointer"
+                                        title="Lihat Detail Aktivitas">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                </button>
+                            </td>
+                        </tr>
+                                            <tr class="hover:bg-slate-50/80 transition">
+                            <td class="px-4 py-3 whitespace-nowrap text-slate-600 font-mono text-[11px] font-semibold">
+                                22/10/2026 12:46:50 WIB
+                            </td>
+                            <td class="px-4 py-3 font-semibold text-slate-900 whitespace-nowrap">
+                                Dili Muryanto, SE., M.Si
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                                                <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-blue-100 text-blue-800">
+                                    login
+                                </span>
+                            </td>
+                            <td class="px-4 py-3 text-slate-800">
+                                <span class="font-medium">Pengguna Dili Muryanto, SE., M.Si (Super Admin) berhasil login</span>
+                                                            </td>
+                            <td class="px-4 py-3 font-mono text-slate-500 text-[11px] whitespace-nowrap">
+                                127.0.0.1
+                            </td>
+                            <td class="px-4 py-3 text-center whitespace-nowrap">
+                                <button type="button"
+                                        @click="selectedLog = {&quot;id&quot;:73,&quot;waktu&quot;:&quot;22\/10\/2026 12:46:50 WIB&quot;,&quot;user_name&quot;:&quot;Dili Muryanto, SE., M.Si&quot;,&quot;aksi&quot;:&quot;login&quot;,&quot;deskripsi&quot;:&quot;Pengguna Dili Muryanto, SE., M.Si (Super Admin) berhasil login&quot;,&quot;model&quot;:null,&quot;model_id&quot;:null,&quot;ip_address&quot;:&quot;127.0.0.1&quot;,&quot;user_agent&quot;:&quot;Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/155.0.0.0 Safari\/537.36 Edg\/155.0.0.0&quot;,&quot;data_lama&quot;:null,&quot;data_baru&quot;:null}; detailModal = true"
+                                        class="p-1.5 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition cursor-pointer"
+                                        title="Lihat Detail Aktivitas">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                </button>
+                            </td>
+                        </tr>
+                                            <tr class="hover:bg-slate-50/80 transition">
+                            <td class="px-4 py-3 whitespace-nowrap text-slate-600 font-mono text-[11px] font-semibold">
+                                21/10/2026 14:05:49 WIB
+                            </td>
+                            <td class="px-4 py-3 font-semibold text-slate-900 whitespace-nowrap">
+                                Dili Muryanto, SE., M.Si
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                                                <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-blue-100 text-blue-800">
+                                    login
+                                </span>
+                            </td>
+                            <td class="px-4 py-3 text-slate-800">
+                                <span class="font-medium">Pengguna Dili Muryanto, SE., M.Si (Super Admin) berhasil login</span>
+                                                            </td>
+                            <td class="px-4 py-3 font-mono text-slate-500 text-[11px] whitespace-nowrap">
+                                127.0.0.1
+                            </td>
+                            <td class="px-4 py-3 text-center whitespace-nowrap">
+                                <button type="button"
+                                        @click="selectedLog = {&quot;id&quot;:72,&quot;waktu&quot;:&quot;21\/10\/2026 14:05:49 WIB&quot;,&quot;user_name&quot;:&quot;Dili Muryanto, SE., M.Si&quot;,&quot;aksi&quot;:&quot;login&quot;,&quot;deskripsi&quot;:&quot;Pengguna Dili Muryanto, SE., M.Si (Super Admin) berhasil login&quot;,&quot;model&quot;:null,&quot;model_id&quot;:null,&quot;ip_address&quot;:&quot;127.0.0.1&quot;,&quot;user_agent&quot;:&quot;Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/155.0.0.0 Safari\/537.36 Edg\/155.0.0.0&quot;,&quot;data_lama&quot;:null,&quot;data_baru&quot;:null}; detailModal = true"
+                                        class="p-1.5 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition cursor-pointer"
+                                        title="Lihat Detail Aktivitas">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                </button>
+                            </td>
+                        </tr>
+                                            <tr class="hover:bg-slate-50/80 transition">
+                            <td class="px-4 py-3 whitespace-nowrap text-slate-600 font-mono text-[11px] font-semibold">
+                                21/10/2026 14:05:18 WIB
+                            </td>
+                            <td class="px-4 py-3 font-semibold text-slate-900 whitespace-nowrap">
+                                admintest
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                                                <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-slate-100 text-slate-700">
+                                    logout
+                                </span>
+                            </td>
+                            <td class="px-4 py-3 text-slate-800">
+                                <span class="font-medium">Pengguna admintest logout</span>
+                                                            </td>
+                            <td class="px-4 py-3 font-mono text-slate-500 text-[11px] whitespace-nowrap">
+                                127.0.0.1
+                            </td>
+                            <td class="px-4 py-3 text-center whitespace-nowrap">
+                                <button type="button"
+                                        @click="selectedLog = {&quot;id&quot;:71,&quot;waktu&quot;:&quot;21\/10\/2026 14:05:18 WIB&quot;,&quot;user_name&quot;:&quot;admintest&quot;,&quot;aksi&quot;:&quot;logout&quot;,&quot;deskripsi&quot;:&quot;Pengguna admintest logout&quot;,&quot;model&quot;:null,&quot;model_id&quot;:null,&quot;ip_address&quot;:&quot;127.0.0.1&quot;,&quot;user_agent&quot;:&quot;Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/155.0.0.0 Safari\/537.36 Edg\/155.0.0.0&quot;,&quot;data_lama&quot;:null,&quot;data_baru&quot;:null}; detailModal = true"
+                                        class="p-1.5 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition cursor-pointer"
+                                        title="Lihat Detail Aktivitas">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                </button>
+                            </td>
+                        </tr>
+                                            <tr class="hover:bg-slate-50/80 transition">
+                            <td class="px-4 py-3 whitespace-nowrap text-slate-600 font-mono text-[11px] font-semibold">
+                                21/10/2026 14:04:33 WIB
+                            </td>
+                            <td class="px-4 py-3 font-semibold text-slate-900 whitespace-nowrap">
+                                admintest
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                                                <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-blue-100 text-blue-800">
+                                    login
+                                </span>
+                            </td>
+                            <td class="px-4 py-3 text-slate-800">
+                                <span class="font-medium">Pengguna admintest (Admin) berhasil login</span>
+                                                            </td>
+                            <td class="px-4 py-3 font-mono text-slate-500 text-[11px] whitespace-nowrap">
+                                127.0.0.1
+                            </td>
+                            <td class="px-4 py-3 text-center whitespace-nowrap">
+                                <button type="button"
+                                        @click="selectedLog = {&quot;id&quot;:70,&quot;waktu&quot;:&quot;21\/10\/2026 14:04:33 WIB&quot;,&quot;user_name&quot;:&quot;admintest&quot;,&quot;aksi&quot;:&quot;login&quot;,&quot;deskripsi&quot;:&quot;Pengguna admintest (Admin) berhasil login&quot;,&quot;model&quot;:null,&quot;model_id&quot;:null,&quot;ip_address&quot;:&quot;127.0.0.1&quot;,&quot;user_agent&quot;:&quot;Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/155.0.0.0 Safari\/537.36 Edg\/155.0.0.0&quot;,&quot;data_lama&quot;:null,&quot;data_baru&quot;:null}; detailModal = true"
+                                        class="p-1.5 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition cursor-pointer"
+                                        title="Lihat Detail Aktivitas">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                </button>
+                            </td>
+                        </tr>
+                                            <tr class="hover:bg-slate-50/80 transition">
+                            <td class="px-4 py-3 whitespace-nowrap text-slate-600 font-mono text-[11px] font-semibold">
+                                21/10/2026 14:04:24 WIB
+                            </td>
+                            <td class="px-4 py-3 font-semibold text-slate-900 whitespace-nowrap">
+                                Dili Muryanto, SE., M.Si
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                                                <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-slate-100 text-slate-700">
+                                    logout
+                                </span>
+                            </td>
+                            <td class="px-4 py-3 text-slate-800">
+                                <span class="font-medium">Pengguna Dili Muryanto, SE., M.Si logout</span>
+                                                            </td>
+                            <td class="px-4 py-3 font-mono text-slate-500 text-[11px] whitespace-nowrap">
+                                127.0.0.1
+                            </td>
+                            <td class="px-4 py-3 text-center whitespace-nowrap">
+                                <button type="button"
+                                        @click="selectedLog = {&quot;id&quot;:69,&quot;waktu&quot;:&quot;21\/10\/2026 14:04:24 WIB&quot;,&quot;user_name&quot;:&quot;Dili Muryanto, SE., M.Si&quot;,&quot;aksi&quot;:&quot;logout&quot;,&quot;deskripsi&quot;:&quot;Pengguna Dili Muryanto, SE., M.Si logout&quot;,&quot;model&quot;:null,&quot;model_id&quot;:null,&quot;ip_address&quot;:&quot;127.0.0.1&quot;,&quot;user_agent&quot;:&quot;Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/155.0.0.0 Safari\/537.36 Edg\/155.0.0.0&quot;,&quot;data_lama&quot;:null,&quot;data_baru&quot;:null}; detailModal = true"
+                                        class="p-1.5 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition cursor-pointer"
+                                        title="Lihat Detail Aktivitas">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                </button>
+                            </td>
+                        </tr>
+                                            <tr class="hover:bg-slate-50/80 transition">
+                            <td class="px-4 py-3 whitespace-nowrap text-slate-600 font-mono text-[11px] font-semibold">
+                                21/10/2026 14:04:21 WIB
+                            </td>
+                            <td class="px-4 py-3 font-semibold text-slate-900 whitespace-nowrap">
+                                Dili Muryanto, SE., M.Si
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                                                <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-emerald-100 text-emerald-800">
+                                    create
+                                </span>
+                            </td>
+                            <td class="px-4 py-3 text-slate-800">
+                                <span class="font-medium">Menambah admin baru: admintest (admintest@test)</span>
+                                                                    <span class="text-[10px] text-slate-400 block font-mono">Model: User (ID: 5)</span>
+                                                            </td>
+                            <td class="px-4 py-3 font-mono text-slate-500 text-[11px] whitespace-nowrap">
+                                127.0.0.1
+                            </td>
+                            <td class="px-4 py-3 text-center whitespace-nowrap">
+                                <button type="button"
+                                        @click="selectedLog = {&quot;id&quot;:68,&quot;waktu&quot;:&quot;21\/10\/2026 14:04:21 WIB&quot;,&quot;user_name&quot;:&quot;Dili Muryanto, SE., M.Si&quot;,&quot;aksi&quot;:&quot;create&quot;,&quot;deskripsi&quot;:&quot;Menambah admin baru: admintest (admintest@test)&quot;,&quot;model&quot;:&quot;User&quot;,&quot;model_id&quot;:5,&quot;ip_address&quot;:&quot;127.0.0.1&quot;,&quot;user_agent&quot;:&quot;Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/155.0.0.0 Safari\/537.36 Edg\/155.0.0.0&quot;,&quot;data_lama&quot;:null,&quot;data_baru&quot;:null}; detailModal = true"
+                                        class="p-1.5 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition cursor-pointer"
+                                        title="Lihat Detail Aktivitas">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                </button>
+                            </td>
+                        </tr>
+                                            <tr class="hover:bg-slate-50/80 transition">
+                            <td class="px-4 py-3 whitespace-nowrap text-slate-600 font-mono text-[11px] font-semibold">
+                                21/10/2026 13:56:49 WIB
+                            </td>
+                            <td class="px-4 py-3 font-semibold text-slate-900 whitespace-nowrap">
+                                Dili Muryanto, SE., M.Si
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                                                <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-amber-100 text-amber-800">
+                                    update
+                                </span>
+                            </td>
+                            <td class="px-4 py-3 text-slate-800">
+                                <span class="font-medium">Memperbarui profil admin</span>
+                                                                    <span class="text-[10px] text-slate-400 block font-mono">Model: User (ID: 1)</span>
+                                                            </td>
+                            <td class="px-4 py-3 font-mono text-slate-500 text-[11px] whitespace-nowrap">
+                                127.0.0.1
+                            </td>
+                            <td class="px-4 py-3 text-center whitespace-nowrap">
+                                <button type="button"
+                                        @click="selectedLog = {&quot;id&quot;:67,&quot;waktu&quot;:&quot;21\/10\/2026 13:56:49 WIB&quot;,&quot;user_name&quot;:&quot;Dili Muryanto, SE., M.Si&quot;,&quot;aksi&quot;:&quot;update&quot;,&quot;deskripsi&quot;:&quot;Memperbarui profil admin&quot;,&quot;model&quot;:&quot;User&quot;,&quot;model_id&quot;:1,&quot;ip_address&quot;:&quot;127.0.0.1&quot;,&quot;user_agent&quot;:&quot;Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/155.0.0.0 Safari\/537.36 Edg\/155.0.0.0&quot;,&quot;data_lama&quot;:null,&quot;data_baru&quot;:null}; detailModal = true"
+                                        class="p-1.5 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition cursor-pointer"
+                                        title="Lihat Detail Aktivitas">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                </button>
+                            </td>
+                        </tr>
+                                            <tr class="hover:bg-slate-50/80 transition">
+                            <td class="px-4 py-3 whitespace-nowrap text-slate-600 font-mono text-[11px] font-semibold">
+                                21/10/2026 13:56:26 WIB
+                            </td>
+                            <td class="px-4 py-3 font-semibold text-slate-900 whitespace-nowrap">
+                                Dili Muryanto, SE., M.Si
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                                                <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-amber-100 text-amber-800">
+                                    update
+                                </span>
+                            </td>
+                            <td class="px-4 py-3 text-slate-800">
+                                <span class="font-medium">Memperbarui profil admin</span>
+                                                                    <span class="text-[10px] text-slate-400 block font-mono">Model: User (ID: 1)</span>
+                                                            </td>
+                            <td class="px-4 py-3 font-mono text-slate-500 text-[11px] whitespace-nowrap">
+                                127.0.0.1
+                            </td>
+                            <td class="px-4 py-3 text-center whitespace-nowrap">
+                                <button type="button"
+                                        @click="selectedLog = {&quot;id&quot;:66,&quot;waktu&quot;:&quot;21\/10\/2026 13:56:26 WIB&quot;,&quot;user_name&quot;:&quot;Dili Muryanto, SE., M.Si&quot;,&quot;aksi&quot;:&quot;update&quot;,&quot;deskripsi&quot;:&quot;Memperbarui profil admin&quot;,&quot;model&quot;:&quot;User&quot;,&quot;model_id&quot;:1,&quot;ip_address&quot;:&quot;127.0.0.1&quot;,&quot;user_agent&quot;:&quot;Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/155.0.0.0 Safari\/537.36 Edg\/155.0.0.0&quot;,&quot;data_lama&quot;:null,&quot;data_baru&quot;:null}; detailModal = true"
+                                        class="p-1.5 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition cursor-pointer"
+                                        title="Lihat Detail Aktivitas">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                </button>
+                            </td>
+                        </tr>
+                                            <tr class="hover:bg-slate-50/80 transition">
+                            <td class="px-4 py-3 whitespace-nowrap text-slate-600 font-mono text-[11px] font-semibold">
+                                21/10/2026 13:56:22 WIB
+                            </td>
+                            <td class="px-4 py-3 font-semibold text-slate-900 whitespace-nowrap">
+                                Super Administrator Dishub
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                                                <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-amber-100 text-amber-800">
+                                    update
+                                </span>
+                            </td>
+                            <td class="px-4 py-3 text-slate-800">
+                                <span class="font-medium">Mengubah password admin</span>
+                                                            </td>
+                            <td class="px-4 py-3 font-mono text-slate-500 text-[11px] whitespace-nowrap">
+                                127.0.0.1
+                            </td>
+                            <td class="px-4 py-3 text-center whitespace-nowrap">
+                                <button type="button"
+                                        @click="selectedLog = {&quot;id&quot;:65,&quot;waktu&quot;:&quot;21\/10\/2026 13:56:22 WIB&quot;,&quot;user_name&quot;:&quot;Super Administrator Dishub&quot;,&quot;aksi&quot;:&quot;update&quot;,&quot;deskripsi&quot;:&quot;Mengubah password admin&quot;,&quot;model&quot;:null,&quot;model_id&quot;:null,&quot;ip_address&quot;:&quot;127.0.0.1&quot;,&quot;user_agent&quot;:&quot;Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/155.0.0.0 Safari\/537.36 Edg\/155.0.0.0&quot;,&quot;data_lama&quot;:null,&quot;data_baru&quot;:null}; detailModal = true"
+                                        class="p-1.5 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition cursor-pointer"
+                                        title="Lihat Detail Aktivitas">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                </button>
+                            </td>
+                        </tr>
+                                            <tr class="hover:bg-slate-50/80 transition">
+                            <td class="px-4 py-3 whitespace-nowrap text-slate-600 font-mono text-[11px] font-semibold">
+                                21/10/2026 13:55:14 WIB
+                            </td>
+                            <td class="px-4 py-3 font-semibold text-slate-900 whitespace-nowrap">
+                                Super Administrator Dishub
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                                                <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-blue-100 text-blue-800">
+                                    login
+                                </span>
+                            </td>
+                            <td class="px-4 py-3 text-slate-800">
+                                <span class="font-medium">Pengguna Super Administrator Dishub (Super Admin) berhasil login</span>
+                                                            </td>
+                            <td class="px-4 py-3 font-mono text-slate-500 text-[11px] whitespace-nowrap">
+                                127.0.0.1
+                            </td>
+                            <td class="px-4 py-3 text-center whitespace-nowrap">
+                                <button type="button"
+                                        @click="selectedLog = {&quot;id&quot;:64,&quot;waktu&quot;:&quot;21\/10\/2026 13:55:14 WIB&quot;,&quot;user_name&quot;:&quot;Super Administrator Dishub&quot;,&quot;aksi&quot;:&quot;login&quot;,&quot;deskripsi&quot;:&quot;Pengguna Super Administrator Dishub (Super Admin) berhasil login&quot;,&quot;model&quot;:null,&quot;model_id&quot;:null,&quot;ip_address&quot;:&quot;127.0.0.1&quot;,&quot;user_agent&quot;:&quot;Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/155.0.0.0 Safari\/537.36 Edg\/155.0.0.0&quot;,&quot;data_lama&quot;:null,&quot;data_baru&quot;:null}; detailModal = true"
+                                        class="p-1.5 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition cursor-pointer"
+                                        title="Lihat Detail Aktivitas">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                </button>
+                            </td>
+                        </tr>
+                                            <tr class="hover:bg-slate-50/80 transition">
+                            <td class="px-4 py-3 whitespace-nowrap text-slate-600 font-mono text-[11px] font-semibold">
+                                21/10/2026 13:55:08 WIB
+                            </td>
+                            <td class="px-4 py-3 font-semibold text-slate-900 whitespace-nowrap">
+                                afdil alfarizi
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                                                <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-slate-100 text-slate-700">
+                                    logout
+                                </span>
+                            </td>
+                            <td class="px-4 py-3 text-slate-800">
+                                <span class="font-medium">Pengguna afdil alfarizi logout</span>
+                                                            </td>
+                            <td class="px-4 py-3 font-mono text-slate-500 text-[11px] whitespace-nowrap">
+                                127.0.0.1
+                            </td>
+                            <td class="px-4 py-3 text-center whitespace-nowrap">
+                                <button type="button"
+                                        @click="selectedLog = {&quot;id&quot;:63,&quot;waktu&quot;:&quot;21\/10\/2026 13:55:08 WIB&quot;,&quot;user_name&quot;:&quot;afdil alfarizi&quot;,&quot;aksi&quot;:&quot;logout&quot;,&quot;deskripsi&quot;:&quot;Pengguna afdil alfarizi logout&quot;,&quot;model&quot;:null,&quot;model_id&quot;:null,&quot;ip_address&quot;:&quot;127.0.0.1&quot;,&quot;user_agent&quot;:&quot;Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/155.0.0.0 Safari\/537.36 Edg\/155.0.0.0&quot;,&quot;data_lama&quot;:null,&quot;data_baru&quot;:null}; detailModal = true"
+                                        class="p-1.5 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition cursor-pointer"
+                                        title="Lihat Detail Aktivitas">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                </button>
+                            </td>
+                        </tr>
+                                            <tr class="hover:bg-slate-50/80 transition">
+                            <td class="px-4 py-3 whitespace-nowrap text-slate-600 font-mono text-[11px] font-semibold">
+                                21/10/2026 13:54:57 WIB
+                            </td>
+                            <td class="px-4 py-3 font-semibold text-slate-900 whitespace-nowrap">
+                                afdil alfarizi
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                                                <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-blue-100 text-blue-800">
+                                    login
+                                </span>
+                            </td>
+                            <td class="px-4 py-3 text-slate-800">
+                                <span class="font-medium">Pengguna afdil alfarizi (Petugas Pelapor) berhasil login</span>
+                                                            </td>
+                            <td class="px-4 py-3 font-mono text-slate-500 text-[11px] whitespace-nowrap">
+                                127.0.0.1
+                            </td>
+                            <td class="px-4 py-3 text-center whitespace-nowrap">
+                                <button type="button"
+                                        @click="selectedLog = {&quot;id&quot;:62,&quot;waktu&quot;:&quot;21\/10\/2026 13:54:57 WIB&quot;,&quot;user_name&quot;:&quot;afdil alfarizi&quot;,&quot;aksi&quot;:&quot;login&quot;,&quot;deskripsi&quot;:&quot;Pengguna afdil alfarizi (Petugas Pelapor) berhasil login&quot;,&quot;model&quot;:null,&quot;model_id&quot;:null,&quot;ip_address&quot;:&quot;127.0.0.1&quot;,&quot;user_agent&quot;:&quot;Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/155.0.0.0 Safari\/537.36 Edg\/155.0.0.0&quot;,&quot;data_lama&quot;:null,&quot;data_baru&quot;:null}; detailModal = true"
+                                        class="p-1.5 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition cursor-pointer"
+                                        title="Lihat Detail Aktivitas">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                </button>
+                            </td>
+                        </tr>
+                                            <tr class="hover:bg-slate-50/80 transition">
+                            <td class="px-4 py-3 whitespace-nowrap text-slate-600 font-mono text-[11px] font-semibold">
+                                21/10/2026 13:54:50 WIB
+                            </td>
+                            <td class="px-4 py-3 font-semibold text-slate-900 whitespace-nowrap">
+                                Super Administrator Dishub
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                                                <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-slate-100 text-slate-700">
+                                    logout
+                                </span>
+                            </td>
+                            <td class="px-4 py-3 text-slate-800">
+                                <span class="font-medium">Pengguna Super Administrator Dishub logout</span>
+                                                            </td>
+                            <td class="px-4 py-3 font-mono text-slate-500 text-[11px] whitespace-nowrap">
+                                127.0.0.1
+                            </td>
+                            <td class="px-4 py-3 text-center whitespace-nowrap">
+                                <button type="button"
+                                        @click="selectedLog = {&quot;id&quot;:61,&quot;waktu&quot;:&quot;21\/10\/2026 13:54:50 WIB&quot;,&quot;user_name&quot;:&quot;Super Administrator Dishub&quot;,&quot;aksi&quot;:&quot;logout&quot;,&quot;deskripsi&quot;:&quot;Pengguna Super Administrator Dishub logout&quot;,&quot;model&quot;:null,&quot;model_id&quot;:null,&quot;ip_address&quot;:&quot;127.0.0.1&quot;,&quot;user_agent&quot;:&quot;Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/155.0.0.0 Safari\/537.36 Edg\/155.0.0.0&quot;,&quot;data_lama&quot;:null,&quot;data_baru&quot;:null}; detailModal = true"
+                                        class="p-1.5 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition cursor-pointer"
+                                        title="Lihat Detail Aktivitas">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                </button>
+                            </td>
+                        </tr>
+                                            <tr class="hover:bg-slate-50/80 transition">
+                            <td class="px-4 py-3 whitespace-nowrap text-slate-600 font-mono text-[11px] font-semibold">
+                                21/10/2026 13:54:46 WIB
+                            </td>
+                            <td class="px-4 py-3 font-semibold text-slate-900 whitespace-nowrap">
+                                Super Administrator Dishub
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                                                <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-amber-100 text-amber-800">
+                                    update
+                                </span>
+                            </td>
+                            <td class="px-4 py-3 text-slate-800">
+                                <span class="font-medium">Super Admin mengubah status akun petugas afdil menjadi: aktif</span>
+                                                                    <span class="text-[10px] text-slate-400 block font-mono">Model: User (ID: 4)</span>
+                                                            </td>
+                            <td class="px-4 py-3 font-mono text-slate-500 text-[11px] whitespace-nowrap">
+                                127.0.0.1
+                            </td>
+                            <td class="px-4 py-3 text-center whitespace-nowrap">
+                                <button type="button"
+                                        @click="selectedLog = {&quot;id&quot;:60,&quot;waktu&quot;:&quot;21\/10\/2026 13:54:46 WIB&quot;,&quot;user_name&quot;:&quot;Super Administrator Dishub&quot;,&quot;aksi&quot;:&quot;update&quot;,&quot;deskripsi&quot;:&quot;Super Admin mengubah status akun petugas afdil menjadi: aktif&quot;,&quot;model&quot;:&quot;User&quot;,&quot;model_id&quot;:4,&quot;ip_address&quot;:&quot;127.0.0.1&quot;,&quot;user_agent&quot;:&quot;Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/155.0.0.0 Safari\/537.36 Edg\/155.0.0.0&quot;,&quot;data_lama&quot;:null,&quot;data_baru&quot;:null}; detailModal = true"
+                                        class="p-1.5 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition cursor-pointer"
+                                        title="Lihat Detail Aktivitas">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                </button>
+                            </td>
+                        </tr>
+                                            <tr class="hover:bg-slate-50/80 transition">
+                            <td class="px-4 py-3 whitespace-nowrap text-slate-600 font-mono text-[11px] font-semibold">
+                                21/10/2026 13:52:46 WIB
+                            </td>
+                            <td class="px-4 py-3 font-semibold text-slate-900 whitespace-nowrap">
+                                Super Administrator Dishub
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                                                <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-blue-100 text-blue-800">
+                                    login
+                                </span>
+                            </td>
+                            <td class="px-4 py-3 text-slate-800">
+                                <span class="font-medium">Pengguna Super Administrator Dishub (Super Admin) berhasil login</span>
+                                                            </td>
+                            <td class="px-4 py-3 font-mono text-slate-500 text-[11px] whitespace-nowrap">
+                                127.0.0.1
+                            </td>
+                            <td class="px-4 py-3 text-center whitespace-nowrap">
+                                <button type="button"
+                                        @click="selectedLog = {&quot;id&quot;:59,&quot;waktu&quot;:&quot;21\/10\/2026 13:52:46 WIB&quot;,&quot;user_name&quot;:&quot;Super Administrator Dishub&quot;,&quot;aksi&quot;:&quot;login&quot;,&quot;deskripsi&quot;:&quot;Pengguna Super Administrator Dishub (Super Admin) berhasil login&quot;,&quot;model&quot;:null,&quot;model_id&quot;:null,&quot;ip_address&quot;:&quot;127.0.0.1&quot;,&quot;user_agent&quot;:&quot;Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/155.0.0.0 Safari\/537.36 Edg\/155.0.0.0&quot;,&quot;data_lama&quot;:null,&quot;data_baru&quot;:null}; detailModal = true"
+                                        class="p-1.5 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition cursor-pointer"
+                                        title="Lihat Detail Aktivitas">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                </button>
+                            </td>
+                        </tr>
+                                    </tbody>
+            </table>
+        </div>
+
+                    <div class="p-4 border-t border-slate-200">
+                <nav role="navigation" aria-label="Pagination Navigation">
+
+        <div class="flex gap-2 items-center justify-between sm:hidden">
+
+                            <span class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-300 cursor-not-allowed leading-5 rounded-md dark:text-gray-300 dark:bg-gray-700 dark:border-gray-600">
+                    &laquo; Previous
+                </span>
+            
+                            <a href="../index.html?page=2" rel="next" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-800 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-800 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-200 dark:focus:border-blue-700 dark:active:bg-gray-700 dark:active:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-900 dark:hover:text-gray-200">
+                    Next &raquo;
+                </a>
+            
+        </div>
+
+        <div class="hidden sm:flex-1 sm:flex sm:gap-2 sm:items-center sm:justify-between">
+
+            <div>
+                <p class="text-sm text-gray-700 leading-5 dark:text-gray-600">
+                    Showing
+                                            <span class="font-medium">1</span>
+                        to
+                        <span class="font-medium">20</span>
+                                        of
+                    <span class="font-medium">77</span>
+                    results
+                </p>
+            </div>
+
+            <div>
+                <span class="inline-flex rtl:flex-row-reverse shadow-sm rounded-md">
+
+                    
+                                            <span aria-disabled="true" aria-label="&amp;laquo; Previous">
+                            <span class="inline-flex items-center px-2 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 cursor-not-allowed rounded-l-md leading-5 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-400" aria-hidden="true">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                            </span>
+                        </span>
+                    
+                    
+                                            
+                        
+                        
+                                                                                                                        <span aria-current="page">
+                                        <span class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-gray-200 border border-gray-300 cursor-default leading-5 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300">1</span>
+                                    </span>
+                                                                                                                                <a href="../index.html?page=2" class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900" aria-label="Go to page 2">
+                                        2
+                                    </a>
+                                                                                                                                <a href="../index.html?page=3" class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900" aria-label="Go to page 3">
+                                        3
+                                    </a>
+                                                                                                                                <a href="../index.html?page=4" class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900" aria-label="Go to page 4">
+                                        4
+                                    </a>
+                                                                                                        
+                    
+                                            <a href="../index.html?page=2" rel="next" class="inline-flex items-center px-2 py-2 -ml-px text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-r-md leading-5 hover:text-gray-400 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:active:bg-gray-700 dark:focus:border-blue-800 dark:text-gray-300 dark:hover:bg-gray-900 dark:hover:text-gray-300" aria-label="Next &amp;raquo;">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                                    </span>
+            </div>
+        </div>
+    </nav>
+
+            </div>
+        
+        <!-- Modal Detail Aktivitas -->
+        <div x-show="detailModal" style="display:none;"
+             class="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4 bg-black/50"
+             x-transition:enter="transition ease-out duration-200"
+             x-transition:enter-start="opacity-0"
+             x-transition:enter-end="opacity-100"
+             x-transition:leave="transition ease-in duration-150"
+             x-transition:leave-start="opacity-100"
+             x-transition:leave-end="opacity-0">
+            <div @click.away="detailModal = false" class="bg-white rounded-2xl max-w-xl w-full p-6 text-left shadow-xl border border-slate-200" x-show="selectedLog">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                    <div class="flex items-center gap-2">
+                        <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-blue-100 text-blue-800" x-text="selectedLog?.aksi"></span>
+                        <h3 class="text-sm font-bold text-slate-800">Detail Aktivitas Petugas</h3>
+                    </div>
+                    <button type="button" @click="detailModal = false" class="text-slate-400 hover:text-slate-600 p-1 cursor-pointer">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                </div>
+
+                <div class="mt-4 space-y-3 text-xs">
+                    <div class="grid grid-cols-3 gap-2 py-1.5 border-b border-slate-50">
+                        <span class="text-slate-500 font-medium">Waktu (WIB):</span>
+                        <span class="col-span-2 font-mono font-bold text-slate-800" x-text="selectedLog?.waktu"></span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 py-1.5 border-b border-slate-50">
+                        <span class="text-slate-500 font-medium">Petugas:</span>
+                        <span class="col-span-2 font-semibold text-slate-900" x-text="selectedLog?.user_name"></span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 py-1.5 border-b border-slate-50">
+                        <span class="text-slate-500 font-medium">Tindakan / Aksi:</span>
+                        <span class="col-span-2 font-semibold uppercase text-slate-800" x-text="selectedLog?.aksi"></span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 py-1.5 border-b border-slate-50">
+                        <span class="text-slate-500 font-medium">Deskripsi:</span>
+                        <span class="col-span-2 text-slate-800" x-text="selectedLog?.deskripsi"></span>
+                    </div>
+                    <template x-if="selectedLog?.model">
+                        <div class="grid grid-cols-3 gap-2 py-1.5 border-b border-slate-50">
+                            <span class="text-slate-500 font-medium">Model Terkait:</span>
+                            <span class="col-span-2 font-mono text-slate-700" x-text="selectedLog?.model + ' (ID: ' + (selectedLog?.model_id ?? '-') + ')'"></span>
+                        </div>
+                    </template>
+                    <div class="grid grid-cols-3 gap-2 py-1.5 border-b border-slate-50">
+                        <span class="text-slate-500 font-medium">IP Address:</span>
+                        <span class="col-span-2 font-mono text-slate-700" x-text="selectedLog?.ip_address"></span>
+                    </div>
+                    <template x-if="selectedLog?.user_agent">
+                        <div class="grid grid-cols-3 gap-2 py-1.5 border-b border-slate-50">
+                            <span class="text-slate-500 font-medium">User Agent:</span>
+                            <span class="col-span-2 text-slate-600 break-all text-[11px]" x-text="selectedLog?.user_agent"></span>
+                        </div>
+                    </template>
+
+                    <template x-if="selectedLog?.data_lama">
+                        <div class="mt-3">
+                            <p class="font-semibold text-slate-700 mb-1">Data Sebelum Perubahan:</p>
+                            <pre class="bg-slate-50 p-2.5 rounded-lg border border-slate-200 text-[11px] font-mono text-slate-700 overflow-x-auto max-h-32" x-text="JSON.stringify(selectedLog?.data_lama, null, 2)"></pre>
+                        </div>
+                    </template>
+
+                    <template x-if="selectedLog?.data_baru">
+                        <div class="mt-3">
+                            <p class="font-semibold text-slate-700 mb-1">Data Sesudah Perubahan:</p>
+                            <pre class="bg-slate-50 p-2.5 rounded-lg border border-slate-200 text-[11px] font-mono text-slate-700 overflow-x-auto max-h-32" x-text="JSON.stringify(selectedLog?.data_baru, null, 2)"></pre>
+                        </div>
+                    </template>
+                </div>
+
+                <div class="mt-5 flex justify-end">
+                    <button type="button" @click="detailModal = false" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-semibold transition cursor-pointer">
+                        Tutup
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    <div class="p-4 border-t border-slate-200">
+                <nav role="navigation" aria-label="Pagination Navigation">
+
+        <div class="flex gap-2 items-center justify-between sm:hidden">
+
+                            <span class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-300 cursor-not-allowed leading-5 rounded-md dark:text-gray-300 dark:bg-gray-700 dark:border-gray-600">
+                    &laquo; Previous
+                </span>
+            
+                            <a href="../index.html?page=2" rel="next" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-800 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-800 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-200 dark:focus:border-blue-700 dark:active:bg-gray-700 dark:active:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-900 dark:hover:text-gray-200">
+                    Next &raquo;
+                </a>
+            
+        </div>
+
+        <div class="hidden sm:flex-1 sm:flex sm:gap-2 sm:items-center sm:justify-between">
+
+            <div>
+                <p class="text-sm text-gray-700 leading-5 dark:text-gray-600">
+                    Showing
+                                            <span class="font-medium">1</span>
+                        to
+                        <span class="font-medium">20</span>
+                                        of
+                    <span class="font-medium">77</span>
+                    results
+                </p>
+            </div>
+
+            <div>
+                <span class="inline-flex rtl:flex-row-reverse shadow-sm rounded-md">
+
+                    
+                                            <span aria-disabled="true" aria-label="&amp;laquo; Previous">
+                            <span class="inline-flex items-center px-2 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 cursor-not-allowed rounded-l-md leading-5 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-400" aria-hidden="true">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                            </span>
+                        </span>
+                    
+                    
+                                            
+                        
+                        
+                                                                                                                        <span aria-current="page">
+                                        <span class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-gray-200 border border-gray-300 cursor-default leading-5 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300">1</span>
+                                    </span>
+                                                                                                                                <a href="../index.html?page=2" class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900" aria-label="Go to page 2">
+                                        2
+                                    </a>
+                                                                                                                                <a href="../index.html?page=3" class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900" aria-label="Go to page 3">
+                                        3
+                                    </a>
+                                                                                                                                <a href="../index.html?page=4" class="inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-700 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:hover:text-gray-300 dark:active:bg-gray-700 dark:focus:border-blue-800 hover:bg-gray-100 dark:hover:bg-gray-900" aria-label="Go to page 4">
+                                        4
+                                    </a>
+                                                                                                        
+                    
+                                            <a href="../index.html?page=2" rel="next" class="inline-flex items-center px-2 py-2 -ml-px text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-r-md leading-5 hover:text-gray-400 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:active:bg-gray-700 dark:focus:border-blue-800 dark:text-gray-300 dark:hover:bg-gray-900 dark:hover:text-gray-300" aria-label="Next &amp;raquo;">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                                    </span>
+            </div>
+        </div>
+    </nav>
+
+            </div>
+            </div>
+</div>
+        </main>
+    </div>
+</div>
+<script>
+function handleDemoSubmit(e, prefix) {
+    e.preventDefault();
+    alert('Simulasi Demo: Aksi berhasil diproses! (Dalam mode demo online)');
+    var form = e.target;
+    if (form.action && form.action.includes('login')) {
+        window.location.href = prefix + 'dashboard.html';
+    } else if (form.action && form.action.includes('kendaraan')) {
+        window.location.href = prefix + 'kendaraan.html';
+    } else {
+        window.location.href = prefix + 'dashboard.html';
+    }
+    return false;
+}
+</script>
+</body>
+</html>

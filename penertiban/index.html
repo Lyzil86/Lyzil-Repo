@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="w6ZfjB4WuUET4NHa2eyZWoeOEHRjf5O6rUUBGxny">
+    <title>Data Penertiban &amp; Penyitaan — Penertiban Angkutan Umum Kota Bogor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="../index.html/build/assets/app-DJl5Ulfr.css" /><link rel="modulepreload" as="script" href="../index.html/build/assets/app-Dj93Lf1N.js" /><link rel="stylesheet" href="../index.html/build/assets/app-DJl5Ulfr.css" /><script type="module" src="../index.html/build/assets/app-Dj93Lf1N.js"></script></head>
+<body class="bg-gray-50 font-inter text-gray-800 antialiased">
+<div x-data="{ sidebarOpen: false }" class="flex h-screen overflow-hidden">
+
+    
+    <div x-show="sidebarOpen" @click="sidebarOpen=false"
+         x-transition:enter="transition-opacity ease-linear duration-200"
+         x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+         x-transition:leave="transition-opacity ease-linear duration-200"
+         x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+         class="fixed inset-0 z-20 bg-black/50 lg:hidden" style="display:none;"></div>
+
+    
+    <aside :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'"
+           class="fixed inset-y-0 left-0 z-30 w-64 flex flex-col bg-[#1a2744] text-white transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0">
+
+        
+        <div class="flex items-center gap-3 px-6 py-5 border-b border-white/10">
+            <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 p-1">
+                <img src="../images/logo-dishub.png" alt="Logo Dishub" class="w-8 h-8 object-contain">
+            </div>
+            <div>
+                <p class="text-xs font-semibold text-blue-300 leading-tight">Dishub Kota Bogor</p>
+                <p class="text-sm font-bold leading-tight">Sistem Pengawasan Informasi Angkutan</p>
+            </div>
+        </div>
+
+        
+        <nav class="flex-1 overflow-y-auto py-4 px-3">
+            
+                                            <a href="../dashboard.html"
+                   class="flex items-center gap-3 px-3 py-2.5 rounded-lg mb-1 transition-all duration-150 text-sm font-medium group text-blue-100/80 hover:bg-white/10 hover:text-white">
+                    <svg class="w-5 h-5 flex-shrink-0 transition-colors text-blue-300 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+        </svg>
+                            Dashboard
+                </a>
+                                            <a href="../kendaraan.html"
+                   class="flex items-center gap-3 px-3 py-2.5 rounded-lg mb-1 transition-all duration-150 text-sm font-medium group text-blue-100/80 hover:bg-white/10 hover:text-white">
+                    <svg class="w-5 h-5 flex-shrink-0 transition-colors text-blue-300 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0M13 6h4l3 5v4h-2m-5-9H5l-2 5v4h2m0 0h8"/>
+        </svg>
+                            Database Kendaraan
+                </a>
+                                            <a href="../penertiban.html"
+                   class="flex items-center gap-3 px-3 py-2.5 rounded-lg mb-1 transition-all duration-150 text-sm font-medium group text-blue-100/80 hover:bg-white/10 hover:text-white">
+                    <svg class="w-5 h-5 flex-shrink-0 transition-colors text-blue-300 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+        </svg>
+                            Data Penertiban
+                </a>
+                                            <a href="../barang-bukti.html"
+                   class="flex items-center gap-3 px-3 py-2.5 rounded-lg mb-1 transition-all duration-150 text-sm font-medium group text-blue-100/80 hover:bg-white/10 hover:text-white">
+                    <svg class="w-5 h-5 flex-shrink-0 transition-colors text-blue-300 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/>
+        </svg>
+                            Barang Bukti
+                </a>
+                                            <a href="../trayek.html"
+                   class="flex items-center gap-3 px-3 py-2.5 rounded-lg mb-1 transition-all duration-150 text-sm font-medium group text-blue-100/80 hover:bg-white/10 hover:text-white">
+                    <svg class="w-5 h-5 flex-shrink-0 transition-colors text-blue-300 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+        </svg>
+                            Data Trayek
+                </a>
+                                            <a href="../index.html/laporan"
+                   class="flex items-center gap-3 px-3 py-2.5 rounded-lg mb-1 transition-all duration-150 text-sm font-medium group text-blue-100/80 hover:bg-white/10 hover:text-white">
+                    <svg class="w-5 h-5 flex-shrink-0 transition-colors text-blue-300 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+        </svg>
+                            Laporan
+                </a>
+                                            <a href="../audit-log.html"
+                   class="flex items-center gap-3 px-3 py-2.5 rounded-lg mb-1 transition-all duration-150 text-sm font-medium group text-blue-100/80 hover:bg-white/10 hover:text-white">
+                    <svg class="w-5 h-5 flex-shrink-0 transition-colors text-blue-300 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+                            Audit Log
+                </a>
+            
+                        <div class="mt-4 mb-1 px-3">
+                <p class="text-xs font-semibold text-blue-300/60 uppercase tracking-wider">Administrasi</p>
+            </div>
+            <a href="../dashboard.html"
+               class="flex items-center justify-between px-3 py-2.5 rounded-lg mb-1 transition-all duration-150 text-sm font-medium text-blue-100/80 hover:bg-white/10 hover:text-white">
+                <div class="flex items-center gap-3">
+                    <svg class="w-5 h-5 flex-shrink-0 transition-colors text-blue-300 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+        </svg>
+                            <span>Akun Petugas</span>
+                </div>
+                                            </a>
+            <a href="../index.html/admin"
+               class="flex items-center gap-3 px-3 py-2.5 rounded-lg mb-1 transition-all duration-150 text-sm font-medium text-blue-100/80 hover:bg-white/10 hover:text-white">
+                <svg class="w-5 h-5 flex-shrink-0 transition-colors text-blue-300 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+        </svg>
+                        Manajemen Admin
+            </a>
+            
+            <div class="mt-4 mb-1 px-3">
+                <p class="text-xs font-semibold text-blue-300/60 uppercase tracking-wider">Akun</p>
+            </div>
+            <a href="../index.html/pengaturan"
+               class="flex items-center gap-3 px-3 py-2.5 rounded-lg mb-1 transition-all duration-150 text-sm font-medium text-blue-100/80 hover:bg-white/10 hover:text-white">
+                <svg class="w-5 h-5 flex-shrink-0 transition-colors text-blue-300 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+        </svg>
+                        Pengaturan
+            </a>
+        </nav>
+
+        
+        <div class="border-t border-white/10 px-4 py-4">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-sm font-bold flex-shrink-0">
+                    D
+                </div>
+                <div class="min-w-0">
+                    <p class="text-sm font-semibold truncate">Dili Muryanto, SE., M.Si</p>
+                    <p class="text-xs text-blue-300/70 truncate">Super Admin</p>
+                </div>
+            </div>
+            <form action="../index.html" method="GET" onsubmit="handleDemoSubmit(event, '../')">
+                <input type="hidden" name="_token" value="w6ZfjB4WuUET4NHa2eyZWoeOEHRjf5O6rUUBGxny" autocomplete="off">                <button type="submit"
+                        class="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-red-300 hover:bg-red-500/20 hover:text-red-200 transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                    </svg>
+                    Logout
+                </button>
+            </form>
+        </div>
+    </aside>
+
+    
+    <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+
+        
+        <header class="bg-white border-b border-gray-200 px-4 lg:px-6 py-3 flex items-center justify-between flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <button @click="sidebarOpen = !sidebarOpen" class="lg:hidden p-2 rounded-lg text-gray-500 hover:bg-gray-100">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+                <div>
+                    <h1 class="text-base lg:text-lg font-bold text-gray-800">Data Penertiban &amp; Penyitaan</h1>
+                                        <div class="text-xs text-gray-400 mt-0.5">    <span>Operasional</span> / <span class="text-slate-600 font-medium">Data Penertiban</span>
+</div>
+                                    </div>
+            </div>
+            <div class="flex items-center gap-3">
+                
+                <div class="flex items-center gap-2 sm:gap-3 bg-slate-50 border border-slate-200/80 rounded-xl px-2.5 py-1.5 shadow-sm">
+                    <!-- 1. Logo Pemkot Bogor -->
+                    <div class="flex items-center gap-1" title="Pemerintah Kota Bogor">
+                        <img src="../images/logo-kota-bogor.png" alt="Logo Pemkot Bogor" class="w-6 h-6 object-contain">
+                    </div>
+
+                    <!-- 2. Logo Dishub Kota Bogor -->
+                    <div class="flex items-center gap-1" title="Dinas Perhubungan Kota Bogor">
+                        <img src="../images/logo-dishub.png" alt="Logo Dishub Kota Bogor" class="w-6 h-6 object-contain">
+                    </div>
+
+                    <div class="h-4 w-px bg-slate-300 hidden sm:block"></div>
+
+                    <!-- 3. Maskot Rubo -->
+                    <div class="hidden sm:flex items-center gap-1" title="Maskot RuBo (Rusa Bogor)">
+                        <img src="../images/maskot-rubo.png" alt="Maskot RuBo" class="w-6 h-6 object-contain">
+                        <span class="text-[10px] font-bold text-blue-900 hidden md:inline">RuBo</span>
+                    </div>
+
+                    <!-- 4. Tugu Kujang -->
+                    <div class="hidden md:flex items-center gap-1" title="Landmark Tugu Kujang">
+                        <div class="w-6 h-6 rounded-full overflow-hidden border border-amber-300 shadow-xs flex-shrink-0">
+                            <img src="../images/tugu-kujang.jpg" alt="Tugu Kujang" class="w-full h-full object-cover">
+                        </div>
+                        <span class="text-[10px] font-medium text-slate-600 hidden lg:inline">Tugu Kujang</span>
+                    </div>
+
+                    <!-- 5. Lawang Salapan -->
+                    <div class="hidden md:flex items-center gap-1" title="Tepas Lawang Salapan">
+                        <div class="w-6 h-6 rounded-full overflow-hidden border border-blue-300 shadow-xs flex-shrink-0">
+                            <img src="../images/lawang-salapan.jpg" alt="Lawang Salapan" class="w-full h-full object-cover">
+                        </div>
+                        <span class="text-[10px] font-medium text-slate-600 hidden lg:inline">Lawang Salapan</span>
+                    </div>
+
+                    <div class="h-4 w-px bg-slate-300"></div>
+
+                    <!-- 6. Teks Identitas Salawang -->
+                    <div class="flex items-center gap-1">
+                        <span class="px-2 py-0.5 bg-gradient-to-r from-blue-700 via-indigo-700 to-amber-600 text-white text-[11px] font-extrabold tracking-wider rounded-lg shadow-xs uppercase">
+                            Salawang
+                        </span>
+                    </div>
+                </div>
+
+                <span class="hidden sm:block text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full whitespace-nowrap">
+                    Thursday, 22 October 2026
+                </span>
+            </div>
+        </header>
+
+        
+        
+        
+        <main class="flex-1 overflow-y-auto px-4 lg:px-6 py-4">
+            <div class="space-y-5" x-data="{ deleteModal: false, deleteUrl: '', deleteItemName: '' }">
+    <!-- Header Action & Quick Stat -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+            <h2 class="text-lg font-bold text-slate-800">Tindakan Penertiban Angkutan</h2>
+            <p class="text-xs text-slate-500">Rekapitulasi berkas penindakan dan penyitaan armada angkutan melebihi 20 tahun.</p>
+        </div>
+        <div class="flex items-center gap-2">
+            <a href="../penertiban.html/create"
+               class="px-4 py-2.5 bg-blue-700 hover:bg-blue-800 text-white rounded-xl text-xs font-semibold shadow-sm transition flex items-center gap-2 cursor-pointer">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                Buat Surat Penyitaan Baru
+            </a>
+        </div>
+    </div>
+
+    <!-- Filter & Search Toolbar -->
+    <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+        <form method="GET" action="../penertiban.html" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3" onsubmit="handleDemoSubmit(event, '../')">
+            <div class="lg:col-span-2">
+                <label class="block text-[11px] font-semibold text-slate-600 uppercase tracking-wider mb-1">Cari Data</label>
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                    </span>
+                    <input type="text" name="search" value=""
+                           placeholder="No. Surat, No. Kendaraan, Lokasi..."
+                           class="w-full pl-9 pr-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-600">
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-[11px] font-semibold text-slate-600 uppercase tracking-wider mb-1">Status Penindakan</label>
+                <select name="status" class="w-full py-2 px-3 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-600">
+                    <option value="">Semua Status</option>
+                    <option value="draft" >Draft</option>
+                    <option value="aktif" >Aktif</option>
+                    <option value="selesai" >Selesai</option>
+                    <option value="dibatalkan" >Dibatalkan</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-[11px] font-semibold text-slate-600 uppercase tracking-wider mb-1">Tanggal Penindakan</label>
+                <input type="date" name="tanggal_dari" value=""
+                       class="w-full py-2 px-3 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white">
+            </div>
+
+            <div class="flex items-end gap-2">
+                <button type="submit" class="flex-1 py-2 px-3 bg-slate-800 hover:bg-slate-900 text-white rounded-xl text-xs font-semibold transition">
+                    Filter Data
+                </button>
+                            </div>
+        </form>
+    </div>
+
+    <!-- Table Container -->
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs">
+                <thead class="bg-slate-50 text-slate-600 font-semibold border-b border-slate-200 uppercase tracking-wider">
+                    <tr>
+                        <th class="px-4 py-3.5">Nomor Surat</th>
+                        <th class="px-4 py-3.5">Kendaraan</th>
+                        <th class="px-4 py-3.5">Trayek</th>
+                        <th class="px-4 py-3.5">Lokasi & Tgl Penindakan</th>
+                        <th class="px-4 py-3.5">Petugas PPNS</th>
+                        <th class="px-4 py-3.5">Status</th>
+                        <th class="px-4 py-3.5 text-right">Tindakan</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 text-slate-700">
+                                            <tr class="hover:bg-slate-50/80 transition">
+                            <td class="px-4 py-3">
+                                <span class="font-bold text-slate-900 font-mono block">
+                                    500/605 - Daltib
+                                </span>
+                                <span class="text-[11px] text-slate-400">
+                                    Tgl Surat: 21/10/2026
+                                </span>
+                            </td>
+                            <td class="px-4 py-3">
+                                                                    <a href="../kendaraan.html/5" class="font-bold text-blue-700 hover:underline block">
+                                        F 1955 ZZ
+                                                                            </a>
+                                    <span class="text-[11px] text-slate-400">
+                                        Tahun 1999 (21 th)
+                                    </span>
+                                                            </td>
+                            <td class="px-4 py-3">
+                                                                    <span class="font-semibold text-slate-800">Trayek 05</span>
+                                    <span class="block text-[11px] text-slate-400 truncate max-w-[120px]">Trayek 05 (Bubulak - Ciawi via Tol Baranangsiang)</span>
+                                                            </td>
+                            <td class="px-4 py-3">
+                                <span class="font-medium text-slate-800 block truncate max-w-[150px]">Jl. Raya Tajur, Kota Bogor</span>
+                                <span class="text-[11px] text-slate-500">21/10/2026</span>
+                            </td>
+                            <td class="px-4 py-3 text-slate-600">
+                                FAZAL RACHMAN SE
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                                                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-100 text-amber-800">
+                                        Aktif (Disita)
+                                    </span>
+                                                            </td>
+                            <td class="px-4 py-3 text-right whitespace-nowrap">
+                                <div class="flex items-center justify-end gap-1">
+                                    <a href="../penertiban.html/7/cetak" target="_blank"
+                                       class="p-1.5 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition" title="Cetak Surat Penyitaan">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                                    </a>
+                                    <a href="../penertiban.html/7"
+                                       class="p-1.5 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition" title="Buka Berkas">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                    </a>
+                                    <a href="../penertiban.html/7/edit"
+                                       class="p-1.5 text-slate-600 hover:text-amber-600 hover:bg-amber-50 rounded-lg transition" title="Edit Data">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                                    </a>
+                                    <button type="button"
+                                            @click="deleteModal = true; deleteUrl = '../penertiban.html/7'; deleteItemName = '500/605 - Daltib'"
+                                            class="p-1.5 text-slate-600 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition cursor-pointer" title="Hapus Berkas">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                                            <tr class="hover:bg-slate-50/80 transition">
+                            <td class="px-4 py-3">
+                                <span class="font-bold text-slate-900 font-mono block">
+                                    500/502 - Daltib
+                                </span>
+                                <span class="text-[11px] text-slate-400">
+                                    Tgl Surat: 20/10/2026
+                                </span>
+                            </td>
+                            <td class="px-4 py-3">
+                                                                    <a href="../kendaraan.html/4" class="font-bold text-blue-700 hover:underline block">
+                                        F 1977 MM
+                                                                            </a>
+                                    <span class="text-[11px] text-slate-400">
+                                        Tahun 2017 (23 th)
+                                    </span>
+                                                            </td>
+                            <td class="px-4 py-3">
+                                                                    <span class="font-semibold text-slate-800">Trayek 04</span>
+                                    <span class="block text-[11px] text-slate-400 truncate max-w-[120px]">Trayek 04 (Sukasari - Terminal Merdeka)</span>
+                                                            </td>
+                            <td class="px-4 py-3">
+                                <span class="font-medium text-slate-800 block truncate max-w-[150px]">Jl. Suryakencana, Bogor Tengah</span>
+                                <span class="text-[11px] text-slate-500">20/10/2026</span>
+                            </td>
+                            <td class="px-4 py-3 text-slate-600">
+                                FAZAL RACHMAN SE
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                                                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-100 text-amber-800">
+                                        Aktif (Disita)
+                                    </span>
+                                                            </td>
+                            <td class="px-4 py-3 text-right whitespace-nowrap">
+                                <div class="flex items-center justify-end gap-1">
+                                    <a href="../penertiban.html/6/cetak" target="_blank"
+                                       class="p-1.5 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition" title="Cetak Surat Penyitaan">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                                    </a>
+                                    <a href="../penertiban.html/6"
+                                       class="p-1.5 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition" title="Buka Berkas">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                    </a>
+                                    <a href="../penertiban.html/6/edit"
+                                       class="p-1.5 text-slate-600 hover:text-amber-600 hover:bg-amber-50 rounded-lg transition" title="Edit Data">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                                    </a>
+                                    <button type="button"
+                                            @click="deleteModal = true; deleteUrl = '../penertiban.html/6'; deleteItemName = '500/502 - Daltib'"
+                                            class="p-1.5 text-slate-600 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition cursor-pointer" title="Hapus Berkas">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                                            <tr class="hover:bg-slate-50/80 transition">
+                            <td class="px-4 py-3">
+                                <span class="font-bold text-slate-900 font-mono block">
+                                    500/ 188 - Daltib
+                                </span>
+                                <span class="text-[11px] text-slate-400">
+                                    Tgl Surat: 05/03/2026
+                                </span>
+                            </td>
+                            <td class="px-4 py-3">
+                                                                    <a href="../kendaraan.html/5" class="font-bold text-blue-700 hover:underline block">
+                                        F 1955 ZZ
+                                                                            </a>
+                                    <span class="text-[11px] text-slate-400">
+                                        Tahun 1999 (27 th)
+                                    </span>
+                                                            </td>
+                            <td class="px-4 py-3">
+                                                                    <span class="font-semibold text-slate-800">Trayek 05</span>
+                                    <span class="block text-[11px] text-slate-400 truncate max-w-[120px]">Trayek 05 (Bubulak - Ciawi via Tol Baranangsiang)</span>
+                                                            </td>
+                            <td class="px-4 py-3">
+                                <span class="font-medium text-slate-800 block truncate max-w-[150px]">Jl. Raya Tajur, Depan Mall Boxies</span>
+                                <span class="text-[11px] text-slate-500">05/03/2026</span>
+                            </td>
+                            <td class="px-4 py-3 text-slate-600">
+                                FAZAL RACHMAN SE
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                                                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-100 text-amber-800">
+                                        Aktif (Disita)
+                                    </span>
+                                                            </td>
+                            <td class="px-4 py-3 text-right whitespace-nowrap">
+                                <div class="flex items-center justify-end gap-1">
+                                    <a href="../penertiban.html/4/cetak" target="_blank"
+                                       class="p-1.5 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition" title="Cetak Surat Penyitaan">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                                    </a>
+                                    <a href="../penertiban.html/4"
+                                       class="p-1.5 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition" title="Buka Berkas">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                    </a>
+                                    <a href="../penertiban.html/4/edit"
+                                       class="p-1.5 text-slate-600 hover:text-amber-600 hover:bg-amber-50 rounded-lg transition" title="Edit Data">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                                    </a>
+                                    <button type="button"
+                                            @click="deleteModal = true; deleteUrl = '../penertiban.html/4'; deleteItemName = '500/ 188 - Daltib'"
+                                            class="p-1.5 text-slate-600 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition cursor-pointer" title="Hapus Berkas">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                                            <tr class="hover:bg-slate-50/80 transition">
+                            <td class="px-4 py-3">
+                                <span class="font-bold text-slate-900 font-mono block">
+                                    500/ 172 - Daltib
+                                </span>
+                                <span class="text-[11px] text-slate-400">
+                                    Tgl Surat: 22/02/2026
+                                </span>
+                            </td>
+                            <td class="px-4 py-3">
+                                                                    <a href="../kendaraan.html/3" class="font-bold text-blue-700 hover:underline block">
+                                        F 1904 KK
+                                                                            </a>
+                                    <span class="text-[11px] text-slate-400">
+                                        Tahun 2000 (26 th)
+                                    </span>
+                                                            </td>
+                            <td class="px-4 py-3">
+                                                                    <span class="font-semibold text-slate-800">Trayek 03</span>
+                                    <span class="block text-[11px] text-slate-400 truncate max-w-[120px]">Trayek 03 (Baranangsiang - Semplak)</span>
+                                                            </td>
+                            <td class="px-4 py-3">
+                                <span class="font-medium text-slate-800 block truncate max-w-[150px]">Jl. Abdullah Bin Nuh, Yasmin, Bogor Barat</span>
+                                <span class="text-[11px] text-slate-500">22/02/2026</span>
+                            </td>
+                            <td class="px-4 py-3 text-slate-600">
+                                FAZAL RACHMAN SE
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                                                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-100 text-amber-800">
+                                        Aktif (Disita)
+                                    </span>
+                                                            </td>
+                            <td class="px-4 py-3 text-right whitespace-nowrap">
+                                <div class="flex items-center justify-end gap-1">
+                                    <a href="../penertiban.html/3/cetak" target="_blank"
+                                       class="p-1.5 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition" title="Cetak Surat Penyitaan">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                                    </a>
+                                    <a href="../penertiban.html/3"
+                                       class="p-1.5 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition" title="Buka Berkas">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                    </a>
+                                    <a href="../penertiban.html/3/edit"
+                                       class="p-1.5 text-slate-600 hover:text-amber-600 hover:bg-amber-50 rounded-lg transition" title="Edit Data">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                                    </a>
+                                    <button type="button"
+                                            @click="deleteModal = true; deleteUrl = '../penertiban.html/3'; deleteItemName = '500/ 172 - Daltib'"
+                                            class="p-1.5 text-slate-600 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition cursor-pointer" title="Hapus Berkas">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                                            <tr class="hover:bg-slate-50/80 transition">
+                            <td class="px-4 py-3">
+                                <span class="font-bold text-slate-900 font-mono block">
+                                    500/ 160 - Daltib
+                                </span>
+                                <span class="text-[11px] text-slate-400">
+                                    Tgl Surat: 10/02/2026
+                                </span>
+                            </td>
+                            <td class="px-4 py-3">
+                                                                    <a href="../kendaraan.html/1" class="font-bold text-blue-700 hover:underline block">
+                                        F 1928 AB
+                                                                                    <span class="text-[10px] text-rose-500 font-normal">(Dihapus)</span>
+                                                                            </a>
+                                    <span class="text-[11px] text-slate-400">
+                                        Tahun 2001 (25 th)
+                                    </span>
+                                                            </td>
+                            <td class="px-4 py-3">
+                                                                    <span class="font-semibold text-slate-800">Trayek 01</span>
+                                    <span class="block text-[11px] text-slate-400 truncate max-w-[120px]">Trayek 01 (Baranangsiang - Bubulak via Otista)</span>
+                                                            </td>
+                            <td class="px-4 py-3">
+                                <span class="font-medium text-slate-800 block truncate max-w-[150px]">Jl. Pajajaran, Depan Terminal Baranangsiang</span>
+                                <span class="text-[11px] text-slate-500">10/02/2026</span>
+                            </td>
+                            <td class="px-4 py-3 text-slate-600">
+                                FAZAL RACHMAN SE
+                            </td>
+                            <td class="px-4 py-3 whitespace-nowrap">
+                                                                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-100 text-amber-800">
+                                        Aktif (Disita)
+                                    </span>
+                                                            </td>
+                            <td class="px-4 py-3 text-right whitespace-nowrap">
+                                <div class="flex items-center justify-end gap-1">
+                                    <a href="../penertiban.html/1/cetak" target="_blank"
+                                       class="p-1.5 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition" title="Cetak Surat Penyitaan">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                                    </a>
+                                    <a href="../penertiban.html/1"
+                                       class="p-1.5 text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition" title="Buka Berkas">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                    </a>
+                                    <a href="../penertiban.html/1/edit"
+                                       class="p-1.5 text-slate-600 hover:text-amber-600 hover:bg-amber-50 rounded-lg transition" title="Edit Data">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                                    </a>
+                                    <button type="button"
+                                            @click="deleteModal = true; deleteUrl = '../penertiban.html/1'; deleteItemName = '500/ 160 - Daltib'"
+                                            class="p-1.5 text-slate-600 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition cursor-pointer" title="Hapus Berkas">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                                    </tbody>
+            </table>
+        </div>
+
+            </div>
+
+    <!-- Modal Konfirmasi Hapus Data -->
+    <div x-show="deleteModal" style="display:none;"
+         class="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4 bg-black/50"
+         x-transition:enter="transition ease-out duration-200"
+         x-transition:enter-start="opacity-0"
+         x-transition:enter-end="opacity-100"
+         x-transition:leave="transition ease-in duration-150"
+         x-transition:leave-start="opacity-100"
+         x-transition:leave-end="opacity-0">
+        <div @click.away="deleteModal = false" class="bg-white rounded-2xl max-w-sm w-full p-6 text-center shadow-xl border border-slate-200">
+            <div class="w-12 h-12 rounded-full bg-rose-100 text-rose-600 mx-auto flex items-center justify-center mb-4">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            </div>
+            <h3 class="text-base font-bold text-slate-800">Hapus Berkas Penertiban</h3>
+            <p class="text-xs text-slate-500 mt-2">
+                Hapus berkas <strong class="text-slate-800" x-text="deleteItemName"></strong>? Seluruh data barang bukti yang terkait akan ikut terhapus.
+            </p>
+            <div class="mt-6 flex items-center justify-center gap-3">
+                <button type="button" @click="deleteModal = false" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-semibold transition cursor-pointer">
+                    Batal
+                </button>
+                <form :action="deleteUrl" method="GET" onsubmit="handleDemoSubmit(event, '../')">
+                    <input type="hidden" name="_token" value="w6ZfjB4WuUET4NHa2eyZWoeOEHRjf5O6rUUBGxny" autocomplete="off">                    <input type="hidden" name="_method" value="DELETE">                    <button type="submit" class="px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-xl text-xs font-semibold shadow-sm transition cursor-pointer">
+                        Ya, Hapus
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+        </main>
+    </div>
+</div>
+<script>
+function handleDemoSubmit(e, prefix) {
+    e.preventDefault();
+    alert('Simulasi Demo: Aksi berhasil diproses! (Dalam mode demo online)');
+    var form = e.target;
+    if (form.action && form.action.includes('login')) {
+        window.location.href = prefix + 'dashboard.html';
+    } else if (form.action && form.action.includes('kendaraan')) {
+        window.location.href = prefix + 'kendaraan.html';
+    } else {
+        window.location.href = prefix + 'dashboard.html';
+    }
+    return false;
+}
+</script>
+</body>
+</html>

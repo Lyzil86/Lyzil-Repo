@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Registrasi Petugas Pelapor — Dishub Kota Bogor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+<body class="bg-slate-100 font-inter min-h-screen flex items-center justify-center p-4 antialiased">
+    <div class="w-full max-w-md my-8">
+        <!-- Card Container -->
+        <div class="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
+            <!-- Header Institusi -->
+            <div class="bg-[#1a2744] text-white p-6 text-center relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-blue-500/10 rounded-full blur-2xl"></div>
+                <div class="absolute -left-10 -top-10 w-40 h-40 bg-blue-400/10 rounded-full blur-2xl"></div>
+
+                <div class="relative z-10 flex flex-col items-center">
+                    <div class="flex items-center gap-3 mb-2">
+                        <img src="{{ asset('images/logo-kota-bogor.png') }}" alt="Logo Pemkot Bogor" class="w-10 h-10 object-contain">
+                        <img src="{{ asset('images/logo-dishub.png') }}" alt="Logo Dishub" class="w-10 h-10 object-contain">
+                    </div>
+                    <span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-300 text-[11px] font-semibold rounded-full uppercase tracking-wider mb-1">
+                        Pendaftaran Akun Lapangan
+                    </span>
+                    <h2 class="text-lg font-bold tracking-tight">DINAS PERHUBUNGAN KOTA BOGOR</h2>
+                    <p class="text-xs text-slate-300">Registrasi Petugas Pelapor Data Penertiban</p>
+                </div>
+            </div>
+
+            <!-- Form Body -->
+            <div class="p-6 sm:p-8">
+                <div class="mb-5">
+                    <h3 class="text-base font-bold text-slate-800">Form Pendaftaran Petugas</h3>
+                    <p class="text-xs text-slate-500 mt-0.5">Lengkapi data diri di bawah ini. Akun akan berstatus <strong class="text-amber-700">Menunggu Persetujuan</strong> Super Admin.</p>
+                </div>
+
+                @if($errors->any())
+                    <div class="mb-4 p-3 bg-rose-50 border border-rose-200 text-rose-800 rounded-xl text-xs">
+                        <p class="font-bold mb-1">Terdapat kesalahan:</p>
+                        <ul class="list-disc list-inside space-y-0.5">
+                            @foreach($errors->all() as $err)
+                                <li>{{ $err }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <form action="{{ route('register.post') }}" method="POST" class="space-y-4">
+                    @csrf
+
+                    <div>
+                        <label for="name" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+                            Nama Lengkap Petugas <span class="text-rose-500">*</span>
+                        </label>
+                        <input type="text" name="name" id="name" value="{{ old('name') }}" required autofocus
+                               placeholder="Nama lengkap sesuai identitas kedinasan"
+                               class="w-full px-3.5 py-2.5 text-sm bg-slate-50 border border-slate-300 rounded-xl text-slate-800 focus:bg-white focus:ring-2 focus:ring-blue-600 focus:outline-none">
+                    </div>
+
+                    <div>
+                        <label for="username" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+                            Username <span class="text-rose-500">*</span>
+                        </label>
+                        <input type="text" name="username" id="username" value="{{ old('username') }}" required
+                               placeholder="username"
+                               class="w-full px-3.5 py-2.5 text-sm bg-slate-50 border border-slate-300 rounded-xl text-slate-800 focus:bg-white focus:ring-2 focus:ring-blue-600 focus:outline-none lowercase font-mono">
+                        <p class="text-[11px] text-slate-400 mt-1">Username digunakan untuk masuk ke dalam sistem pelaporan.</p>
+                    </div>
+
+                    <div>
+                        <label for="password" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+                            Kata Sandi <span class="text-rose-500">*</span>
+                        </label>
+                        <input type="password" name="password" id="password" required minlength="8"
+                               placeholder="Minimal 8 karakter"
+                               class="w-full px-3.5 py-2.5 text-sm bg-slate-50 border border-slate-300 rounded-xl text-slate-800 focus:bg-white focus:ring-2 focus:ring-blue-600 focus:outline-none">
+                    </div>
+
+                    <div>
+                        <label for="password_confirmation" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">
+                            Konfirmasi Kata Sandi <span class="text-rose-500">*</span>
+                        </label>
+                        <input type="password" name="password_confirmation" id="password_confirmation" required minlength="8"
+                               placeholder="Ulangi kata sandi di atas"
+                               class="w-full px-3.5 py-2.5 text-sm bg-slate-50 border border-slate-300 rounded-xl text-slate-800 focus:bg-white focus:ring-2 focus:ring-blue-600 focus:outline-none">
+                    </div>
+
+                    <div class="bg-amber-50 border border-amber-200 text-amber-800 p-3 rounded-xl text-xs flex items-start gap-2">
+                        <svg class="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        <p>Setelah mendaftar, akun Anda akan diverifikasi dan diaktifkan oleh <strong>Super Admin</strong> sebelum dapat digunakan untuk login.</p>
+                    </div>
+
+                    <button type="submit"
+                            class="w-full mt-2 py-3 px-4 bg-blue-700 hover:bg-blue-800 text-white text-sm font-semibold rounded-xl shadow-md shadow-blue-700/20 transition-all flex items-center justify-center gap-2 cursor-pointer">
+                        <span>Daftarkan Akun Petugas</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    </button>
+                </form>
+
+                <div class="mt-6 pt-5 border-t border-slate-200 text-center">
+                    <p class="text-xs text-slate-600">
+                        Sudah memiliki akun terverifikasi?
+                        <a href="{{ route('login') }}" class="font-bold text-blue-700 hover:underline">
+                            Masuk di sini
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
